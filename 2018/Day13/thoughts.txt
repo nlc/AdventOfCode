@@ -1,0 +1,4 @@
+Instead of parsing this into some kind of graph from hell, why not treat it as
+what it's presented as: a grid of cells? I could run a cellular automaton on it.
+Since it's a little more stateful than CGOL I think I might use some kind of
+regular-expression based kernel.

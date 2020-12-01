@@ -1,0 +1,9 @@
+spawn ruby ./intcode05.rb
+expect "? "
+send "0\n"
+expect "? "
+send "0\n"
+expect "0"
+expect "(.*)\n"
+set var [ string trim $expect_out(buffer) ]
+puts "var + 9 = [ expr {$var + 9} ]"

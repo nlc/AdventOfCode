@@ -1,0 +1,244 @@
+final int[][] points = {
+  { 311, 74 },
+  { 240, 84 },
+  { 54, 241 },
+  { 99, 336 },
+  { 53, 244 },
+  { 269, 353 },
+  { 175, 75 },
+  { 119, 271 },
+  { 267, 301 },
+  { 251, 248 },
+  { 216, 259 },
+  { 327, 50 },
+  { 120, 248 },
+  { 56, 162 },
+  { 42, 278 },
+  { 309, 269 },
+  { 176, 74 },
+  { 305, 86 },
+  { 93, 359 },
+  { 311, 189 },
+  { 85, 111 },
+  { 255, 106 },
+  { 286, 108 },
+  { 233, 228 },
+  { 105, 211 },
+  { 66, 256 },
+  { 213, 291 },
+  { 67, 53 },
+  { 308, 190 },
+  { 320, 131 },
+  { 254, 179 },
+  { 338, 44 },
+  { 88, 70 },
+  { 296, 113 },
+  { 278, 75 },
+  { 92, 316 },
+  { 274, 92 },
+  { 147, 121 },
+  { 71, 181 },
+  { 113, 268 },
+  { 317, 53 },
+  { 188, 180 },
+  { 42, 267 },
+  { 251, 98 },
+  { 278, 85 },
+  { 268, 266 },
+  { 334, 337 },
+  { 74, 69 },
+  { 102, 227 },
+  { 194, 239 }
+};
+int[][] shiftedPoints;
+
+// Return min, max, centroid
+int[][] measure(int[][] points) {
+  int dimension = points[0].length;
+  int[] minimum = new int[dimension];
+  int[] maximum = new int[dimension];
+  for(int i = 0; i < points[0].length; i++) {
+    minimum[i] = maximum[i] = points[0][i];
+  }
+  
+  int[] centroid = new int[dimension];
+  
+  int[][] result = new int[3][dimension];
+  
+  for(int i = 0; i < points.length; i++) {
+    for(int j = 0; j < dimension; j++) {
+      minimum[j] = min(minimum[j], points[i][j]);
+      maximum[j] = max(maximum[j], points[i][j]);
+      centroid[j] += points[i][j];
+    }
+  }
+  for(int j = 0; j < points[0].length; j++) {
+    centroid[j] /= points.length;
+  }
+  
+  result[0] = minimum;
+  result[1] = maximum;
+  result[2] = centroid;
+  
+  return result;
+}
+
+void manhattan(int[][] grid, int[] origin) {
+  for(int i = 0; i < grid.length; i++) {
+    for(int j = 0; j < grid[i].length; j++) {
+      grid[i][j] = int(abs(i - origin[0])) + int(abs(j - origin[1]));
+    }
+  }
+}
+
+int[][] measure;
+int[] minimum;
+int[] maximum;
+int[] centroid;
+int[] shiftedMinimum;
+int[] shiftedMaximum;
+int[] shiftedCentroid;
+int rise;
+int run;
+int scaling = 3;
+void settings() {
+  measure = measure(points);
+  minimum = measure[0];
+  maximum = measure[1];
+  centroid = measure[2];
+  shiftedMinimum = new int[2];
+  shiftedMaximum = new int[2];
+  shiftedCentroid = new int[2];
+  
+  run = maximum[0] - minimum[0];
+  rise = minimum[1] - minimum[1];
+  
+  int[] offset = {maximum[0] * (scaling - 1) / 2, maximum[1] * (scaling - 1) / 2};
+  
+  shiftedPoints = new int[points.length][points[0].length];
+  for(int i = 0; i < points.length; i++) {
+    for(int j = 0; j < points[0].length; j++) {
+      shiftedPoints[i][j] = points[i][j] + offset[j];
+    }
+  }
+  for(int j = 0; j < points[0].length; j++) {
+    shiftedMinimum[j] = minimum[j] + offset[j];
+    shiftedMaximum[j] = maximum[j] + offset[j];
+    shiftedCentroid[j] = centroid[j] + offset[j];
+  }
+  
+  
+  // Make it big enough to act "infinite"
+  size(scaling * maximum[0], scaling * maximum[1]);
+  
+  // Test
+  // size(100, 100);
+}
+
+void setup() {
+  background(255);
+  /*stroke(color(255, 0, 0));
+  fill(color(255, 0, 0));
+  ellipse(shiftedCentroid[0], shiftedCentroid[1], 5, 5);
+  stroke(0);
+  stroke(color(0, 0, 255));
+  fill(color(0, 0, 255));
+  ellipse(shiftedMinimum[0], shiftedMinimum[1], 5, 5);
+  ellipse(shiftedMaximum[0], shiftedMaximum[1], 5, 5);
+  stroke(0);
+  fill(0);
+  for(int i = 0; i < points.length; i++) {
+    ellipse(shiftedPoints[i][0], shiftedPoints[i][1], 2, 2);
+  }*/
+  
+  // Test
+  /*int[][] testGrid = new int[width][height];
+  int[] testOrigin = {90, 10};
+  manhattan(testGrid, testOrigin);
+  for(int i = 0; i < width; i++) {
+    for(int j = 0; j < height; j++) {
+      stroke(int(map(testGrid[i][j], 0, width + height, 0, 255)));
+      point(i, j);
+    }
+  }*/
+  
+  // 2d grid of cells of schema {distanceSum, nothing, nothing}
+  int[][][] voronoi = new int[width][height][3];
+  int[][] metric = new int[width][height];
+  for(int i = 0; i < voronoi.length; i++) {
+    voronoi[i] = new int[height][3];
+    metric[i] = new int[height];
+    for(int j = 0; j < height; j++) {
+      voronoi[i][j] = new int[3];
+      
+      voronoi[i][j][0] = 0;
+      voronoi[i][j][1] = -1;
+      voronoi[i][j][2] = 0;
+    }
+  }
+  
+  for(int p = 0; p < shiftedPoints.length; p++) {
+    //println("Populating distances from " + shiftedPoints[p][0] + ", " + shiftedPoints[p][1]);
+    manhattan(metric, shiftedPoints[p]);
+    for(int x = 0; x < width; x++) {
+      for(int y = 0; y < height; y++) {
+        voronoi[x][y][0] += metric[x][y];
+      }
+    }
+  }
+  
+  // Generate histogram
+  /*int[] histogram = new int[shiftedPoints.length];
+  for(int i = 0; i < width; i++) {
+    for(int j = 0; j < height; j++) {
+      if(voronoi[i][j][2] == 1) {
+        stroke(255);
+      } else {
+        histogram[voronoi[i][j][1]]++;
+        stroke(int(map(voronoi[i][j][0], 0, width + height, 0, 255)));
+      }
+      point(i, j);
+    }
+  }*/
+  // Exclude edge-touchers
+  /*for(int i = 0; i < width; i++) {
+    histogram[voronoi[i][0][1]] = 0;
+    histogram[voronoi[i][height - 1][1]] = 0;
+  }
+  for(int j = 0; j < height; j++) {
+    histogram[voronoi[0][j][1]] = 0;
+    histogram[voronoi[width - 1][j][1]] = 0;
+  }
+  
+  // Get maximum
+  int mostPoints = 0, mostPointsIndex = -1;
+  for(int i = 0; i < histogram.length; i++) {
+    if(histogram[i] > mostPoints) {
+      mostPoints = histogram[mostPointsIndex = i];
+    }
+  }*/
+  
+  int numInRegion = 0;
+  stroke(31, 127, 127);
+  for(int i = 0; i < width; i++) {
+    for(int j = 0; j < height; j++) {
+      // if(voronoi[i][j][1] == mostPointsIndex) {
+      //if(voronoi[i][j][0] < 10000) {
+        //numInRegion++;
+        stroke((voronoi[i][j][0] / 500) * 5); // for dumb topo map
+        if((voronoi[i][j][0] / 500) == 19) {
+          stroke(31, 127, 127);
+        }
+        point(i, j);
+      //}
+    }
+  }
+  stroke(255, 0, 0);
+  for(int i = 0; i < shiftedPoints.length; i++) {
+    point(shiftedPoints[i][0], shiftedPoints[i][1]);
+  }
+  
+  println(numInRegion);
+  
+  //save("topo_by_500.png");
+}

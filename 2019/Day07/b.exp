@@ -1,0 +1,50 @@
+set f [ open "permutations_b.txt" ]
+set permutations [ split [ read $f ] "\n" ]
+
+set cheatcount 0
+foreach permutation $permutations {
+  set phases [ split $permutation  ]
+  set spawn_ids [list]
+
+  for {set i 0} {$i < [ llength $phases ]} {incr i} {
+    set phase [ lindex $phases $i ]
+    spawn ruby ./intcode05.rb
+    lappend spawn_ids $spawn_id
+    expect "? "
+    send "$phase\n"
+  }
+
+  set cont 1
+  set value 0
+  while {$cont == 1} {
+    for {set i 0} {$i < [ llength $phases ]} {incr i} {
+      set phase [ lindex $phases $i ]
+      set spawn_id [ lindex $spawn_ids $i ]
+      expect {
+        "? " {
+          send "$value\n"
+          expect "$value"
+        }
+        eof {
+          set cont 0
+          wait
+        }
+      }
+
+      if {$cont==1} {
+        expect {
+          #"*\n" {set value [ lindex [ split [ string trim $expect_out(buffer) ] "\n" ] 0 ]}
+          -re {(\d+)[^\n]\n} {set value $expect_out(1,string)}
+          eof {set cont 0; wait}
+        }
+      }
+    }
+  }
+  puts "final $value"
+
+  incr cheatcount
+
+  if {$cheatcount >= 120} {
+    exit
+  }
+}

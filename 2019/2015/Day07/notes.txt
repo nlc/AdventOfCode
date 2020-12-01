@@ -1,0 +1,33 @@
+All operators are:
+  AND    &
+  LSHIFT <<
+  NOT    ~
+  OR     |
+  RSHIFT >>
+
+We can probably solve this by string rewriting
+i.e. given the line
+  x AND y -> d
+we put a rule in our hash like
+  RULES['d'] = 'x AND y'
+And then, when presented with the grapheme 'd' in an expression,
+we replace every instance with
+  'x AND y'
+And continue
+
+Okay, first trials reveal this to be insanely inefficient if not
+non-terminating. Looks like we have to build in some triage.
+A simple way to make this easier would be to take note of which
+rules are simple number substitutions, and start with those.
+
+Really, we should triage by number of substituted variables.
+Explicit numeric expressions come first, followed by all the NOTs,
+followed by the dyadic operators.
+
+Okay, even that seems to grow ridiculously large. Maybe if we
+evaluated nilad rules until there was no change, then monads, etc.
+like 0, 10, 210. Maybe that will terminate the branches as fast
+as possible.
+
+Nope. Of course it only now occurs to me that I should START by
+simplifying the rules themselves.

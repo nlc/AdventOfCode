@@ -1,0 +1,3 @@
+dat <- read.csv("~/code/AoC2019/Day12/vis.csv")
+setwd("~/code/AoC2019/Day12/")
+for(colname in colnames(dat)) {png(paste(colname, ".png", sep=""), width=1024, height=512); plot(dat[,colname]); dev.off()}

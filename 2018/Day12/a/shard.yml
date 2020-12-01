@@ -1,0 +1,13 @@
+name: a
+version: 0.1.0
+
+authors:
+  - Nate <lander@kicksite.net>
+
+targets:
+  a:
+    main: src/a.cr
+
+crystal: 0.25.1
+
+license: MIT

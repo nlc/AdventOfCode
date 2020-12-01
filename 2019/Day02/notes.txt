@@ -1,0 +1,6 @@
+It looks like the function is acutally monotonic in (p1 * 100 + p2),
+so we could have been a lot smarter than the meathead brute force
+approach we actually took, but it did work.
+If we were clever, we could have done some kind of binary search.
+The dumb brute force attempt took several minutes (!) to get through
+only a 100x100 space. How well would binary do?
