@@ -15,7 +15,7 @@ int main() {
   int first_num, second_num, total = 0;
   char ch;
   char string[128];
-  char *fname = "input.txt";
+  char *fname = "../input.txt";
   FILE *file = fopen(fname, "r");
 
   if(!file) {
