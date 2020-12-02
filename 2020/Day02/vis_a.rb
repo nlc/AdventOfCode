@@ -1,3 +1,10 @@
+def slowprint(str)
+  str.chars.each do |char|
+    print char
+    sleep 0.05
+  end
+end
+
 total = 0
 File.readlines('input.txt', chomp: true).each do |line|
   nums, letter, string = line.split
@@ -12,10 +19,11 @@ File.readlines('input.txt', chomp: true).each do |line|
   total += 1 if found
 
   indices = (0...string.length).to_a.select { |i| string[i] == char }
-  printf("%-5s \033[1m%c\033[0m: % -24s", nums, char, string)
-  print "\033[24D"
+  slowprint sprintf("%-5s \033[1m%c\033[0m: %s", nums, char, string)
+  print "\033[#{string.length}D"
   last_index = 0
   indices.each_with_index do |index, i|
+    sleep 0.2
     dx = index - last_index
     if dx > 0
       print "\033[#{dx}C"
@@ -36,13 +44,14 @@ File.readlines('input.txt', chomp: true).each do |line|
 
     last_index = index
   end
+  sleep 0.4
   print "\r\033[32C"
   if too_few
-    print "\033[34mTOO FEW (#{count} < #{least})\033[0m"
+    slowprint "\033[34mTOO FEW (#{count} < #{least})\033[0m"
   elsif too_many
-    print "\033[31mTOO MANY (#{count} > #{most})\033[0m"
+    slowprint "\033[31mTOO MANY (#{count} > #{most})\033[0m"
   else
-    print "\033[32mVALID (#{count})\033[0m"
+    slowprint "\033[32mVALID (#{count})\033[0m"
   end
   puts
 end
