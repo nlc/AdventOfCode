@@ -1,0 +1,20 @@
+# this absolute madman made this
+# https://old.reddit.com/r/adventofcode/comments/k6j11i/2020_day_4_papers_please/
+# https://asciinema.org/a/dIZrcD4sv3QwzYxD4EV0lTbGM
+# and I have been sorely tempted to steal it
+
+
+  /----------------------------------------\
+  |                   |                    |
+  |     ARSTOTZKA     |     893045052      |
+  |                   |                    |
+  |      /~~~~~\      |  Y.O.B. : 1922     |
+  |      | = = |      |  ISSUED : 2010     |
+  |      | @ @ |      |   VALID : 2029     |
+  |      |  V  |      |                    |
+  |       \ o /       |  HEIGHT : 165cm    |
+  |       /^w^\       |    HAIR : #c0946f  |
+  |                   |    EYES : gry      |
+  |      AP           |                    |
+  |                   |    [    ???    ]   |
+  \----------------------------------------/
