@@ -62,6 +62,7 @@ int main(int argc, char **argv) {
   int i;
 
   if(argc < 2) {
+    printf("Usage: %s <input file name>\n", argv[0]);
     return 1;
   }
 
