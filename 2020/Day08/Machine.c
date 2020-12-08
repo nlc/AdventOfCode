@@ -32,6 +32,7 @@ int opcode_function_acc(Machine *machine, Instruction *instruction) {
   machine->iptr++;
   return 1;
 }
+
 int opcode_function_jmp(Machine *machine, Instruction *instruction) {
   machine->iptr += instruction->argument;
   return 1;
@@ -75,6 +76,41 @@ int Instruction_execute(Machine *machine, Instruction *instruction) {
   return status;
 }
 
+int Instruction_print(Instruction *instruction) {
+  /* return printf("%s%+4d", opcode_aliases[instruction->opcode_index], instruction->argument); */
+  int nchars = 0;
+
+  if(instruction->opcode_index == 0) { /* acc, ++123, red */
+    printf("\033[31m");
+    char sign = (instruction->argument >= 0) ? '+' : '-';
+    nchars = printf("%c%+-3d", sign, instruction->argument);
+  } else if(instruction->opcode_index == 1) { /* jmp, ->19, green */
+    printf("\033[32m");
+    char *arrow = (instruction->argument >= 0) ? "->" : "<";
+    nchars = printf("%s%-3d", arrow, instruction->argument);
+  } else if(instruction->opcode_index == 2) { /* nop, ~*~, dim white */
+    printf("\033[22;2m");
+    nchars = printf("~*~  ");
+  } else { /* illegal instruction, ??, inverse red */
+    printf("\033[41m");
+    nchars = printf("??   ");
+  }
+  printf("\033[0m");
+
+  return nchars;
+}
+
+
+void Machine_reset(Machine *machine) {
+  int i;
+
+  machine->iptr = 0;
+  machine->accumulator = 0;
+
+  for(i = 0; i < machine->num_instructions; ++i) {
+    machine->instructions[i].visited = 0;
+  }
+}
 
 int Machine_init(Machine *machine, const char *fname) {
   FILE *file;
@@ -82,9 +118,10 @@ int Machine_init(Machine *machine, const char *fname) {
   int arg;
   int errors = 0;
 
-  machine->num_instructions = 0;
   machine->iptr = 0;
   machine->accumulator = 0;
+
+  machine->num_instructions = 0;
 
   file = fopen(fname, "r");
   if(!file) {
