@@ -19,6 +19,15 @@ typedef struct Machine {
   int accumulator;
 } Machine;
 
+typedef struct MachineDisplay {
+  Machine *machine;
+  int width, height;
+  int cursor_x, cursor_y;
+  int saved_x, saved_y;
+
+  int cells_x;
+} MachineDisplay;
+
 
 /* Simple linear search should do it for now */
 const char opcode_aliases[NUM_OPCODES][4] = {
@@ -76,6 +85,7 @@ int Instruction_execute(Machine *machine, Instruction *instruction) {
   return status;
 }
 
+#define INSTRUCTION_PRINT_WIDTH 6
 int Instruction_print(Instruction *instruction) {
   /* return printf("%s%+4d", opcode_aliases[instruction->opcode_index], instruction->argument); */
   int nchars = 0;
@@ -83,14 +93,14 @@ int Instruction_print(Instruction *instruction) {
   if(instruction->opcode_index == 0) { /* acc, ++123, red */
     printf("\033[31m");
     char sign = (instruction->argument >= 0) ? '+' : '-';
-    nchars = printf("%c%+-3d", sign, instruction->argument);
+    nchars = printf("%c%+-4d", sign, instruction->argument);
   } else if(instruction->opcode_index == 1) { /* jmp, ->19, green */
     printf("\033[32m");
-    char *arrow = (instruction->argument >= 0) ? "->" : "<";
-    nchars = printf("%s%-3d", arrow, instruction->argument);
+    char *arrow = (instruction->argument < 0) ? "<-" : "->";
+    nchars = printf("%s%-3d", arrow, instruction->argument < 0 ? -instruction->argument : instruction->argument);
   } else if(instruction->opcode_index == 2) { /* nop, ~*~, dim white */
     printf("\033[22;2m");
-    nchars = printf("~*~  ");
+    nchars = printf(" ~*~ ");
   } else { /* illegal instruction, ??, inverse red */
     printf("\033[41m");
     nchars = printf("??   ");
@@ -146,4 +156,57 @@ int Machine_init(Machine *machine, const char *fname) {
 
 int Machine_execute(Machine *machine) {
   return Instruction_execute(machine, machine->instructions + machine->iptr);
+}
+
+
+void MachineDisplay_init(MachineDisplay *display, Machine *machine, int width, int height) {
+  display->machine = machine;
+  display->width = width;
+  display->height = height;
+
+  display->cursor_x = display->cursor_y = 1;
+  display->saved_x = display->saved_y = 1;
+
+  display->cells_x = display->width / INSTRUCTION_PRINT_WIDTH;
+}
+
+void MachineDisplay_save(MachineDisplay *display) {
+  display->saved_x = display->cursor_x;
+  display->saved_y = display->cursor_y;
+}
+
+void MachineDisplay_goto(MachineDisplay *display, int x, int y) {
+  display->cursor_x = x;
+  display->cursor_y = y;
+
+  printf("\033[%d;%dH", display->cursor_y, display->cursor_x);
+}
+
+void MachineDisplay_revisit(MachineDisplay *display) {
+  MachineDisplay_goto(display, display->saved_x, display->saved_y);
+}
+
+void MachineDisplay_clear(MachineDisplay *display) {
+  printf("\033[2J");
+
+  /* TODO: Draw border */
+}
+
+void MachineDisplay_draw(MachineDisplay *display) {
+  int i;
+  int len;
+
+  MachineDisplay_clear();
+  for(int i = 0; i < display->machine->num_instructions; ++i) {
+    if(i == display->machine->iptr) {
+      MachineDisplay_save(display); /* Remember this location for later erasure */
+      printf("\033[7m");
+    }
+    int len = Instruction_print(display->machine->instructions + i);
+    printf(" ");
+    // for(int x = 0; x < (6 - len); ++x) {
+    //   printf(" ");
+    // }
+  }
+
 }
