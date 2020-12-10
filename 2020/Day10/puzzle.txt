@@ -112,8 +112,6 @@ differences multiplied by the number of 3-jolt differences?
 
 Your puzzle answer was 2312.
 
-The first half of this puzzle is complete! It provides one gold star: *
-
 --- Part Two ---
 To completely determine whether you have enough adapters, you'll need to figure
 out how many different ways they can be arranged. Every arrangement needs to
@@ -177,9 +175,6 @@ Surely, there must be an efficient way to count the arrangements.
 What is the total number of distinct ways you can arrange the adapters to
 connect the charging outlet to your device?
 
-Answer:
+Your puzzle answer was 12089663946752.
 
-
-Although it hasn't changed, you can still get your puzzle input.
-
-You can also [Share] this puzzle.
+Both parts of this puzzle are complete! They provide two gold stars: **
