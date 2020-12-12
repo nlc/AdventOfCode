@@ -1,18 +1,3 @@
-NB. Conway's Game of Life, for reference
-cgol =: (]=3+4=*)[:+/^:2(,"0/~@i:1)&|.
-
-NB. L.LL.LL.LL
-NB. LLLLLLL.LL
-NB. L.L.L..L..
-NB. LLLL.LL.LL
-NB. L.LL.LL.LL
-NB. L.LLLLL.LL
-NB. ..L.L.....
-NB. LLLLLLLLLL
-NB. L.LLLLLL.L
-NB. L.LLLLL.LL
-mask =: 10 10 $ 1 0 1 1 0 1 1 0 1 1 1 1 1 1 1 1 1 0 1 1 1 0 1 0 1 0 0 1 0 0 1 1 1 1 0 1 1 0 1 1 1 0 1 1 0 1 1 0 1 1 1 0 1 1 1 1 1 0 1 1 0 0 1 0 1 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 0 1 1 1 1 1 1 0 1 1 0 1 1 1 1 1 0 1 1
-
 NB. Embed matrix in a "halo" of zeros
 enhalodef =: (_1&|.)"1@(_1&|.)@((2:+$){.]) NB. probably very inelegant, applying that rotate twice explicitly
 
@@ -23,13 +8,14 @@ unenhalodef =: monad define
 )
 enhalo =: enhalodef :. unenhalodef
 
+neighbors =: [:+/^:2(,"0/~@i:1)&|.
+combine =: dyad def '(x *. (y < 5)) +. ((-. x) *. (y = 0))'
+rule =: combine neighbors&.enhalo
+mrule =: dyad def 'x * rule x * y' NB. mask then rule then mask
+
+
+mask =: '.L' i. > cutopen 1!:1 < 'input.txt'
 state =: (([: $ ]) $ 0:) mask
 
-
-NB. I think we need to
-NB.   1. Mask the state with the mask
-NB.   2. Calculate neighbors
-NB.   3. Mask the state with the mask AGAIN
-neighbors =: [:+/^:2(,"0/~@i:1)&|.
-
-neighbors &.enhalo state
+echo +/^:_ (mask mrule^:1:^:_ state)
+exit 1
