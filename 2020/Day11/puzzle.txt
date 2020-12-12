@@ -103,8 +103,6 @@ seats change state. How many seats end up occupied?
 
 Your puzzle answer was 2296.
 
-The first half of this puzzle is complete! It provides one gold star: *
-
 --- Part Two ---
 As soon as people start to arrive, you realize your mistake. People don't just
 care about adjacent seats - they care about the first seat they can see in each
@@ -223,3 +221,6 @@ equilibrium. Once this occurs, you count 26 occupied seats.
 Given the new visibility method and the rule change for occupied seats becoming
 empty, once equilibrium is reached, how many seats end up occupied?
 
+Your puzzle answer was 2089.
+
+Both parts of this puzzle are complete! They provide two gold stars: **
