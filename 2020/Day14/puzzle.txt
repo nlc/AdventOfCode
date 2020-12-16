@@ -63,8 +63,6 @@ memory after it completes?
 
 Your puzzle answer was 14553106347726.
 
-The first half of this puzzle is complete! It provides one gold star: *
-
 --- Part Two ---
 For some reason, the sea port's computer system still can't communicate with
 your ferry's docking program. It must be using version 2 of the decoder chip!
@@ -128,3 +126,6 @@ end of the program. In this example, the sum is 208.
 Execute the initialization program using an emulator for a version 2 decoder
 chip. What is the sum of all values left in memory after it completes?
 
+Your puzzle answer was 2737766154126.
+
+Both parts of this puzzle are complete! They provide two gold stars: **
