@@ -183,7 +183,12 @@ void MachineDisplay_goto(MachineDisplay *display, int x, int y) {
 }
 
 void MachineDisplay_revisit(MachineDisplay *display) {
+  int temp;
+
   MachineDisplay_goto(display, display->saved_x, display->saved_y);
+
+  display->saved_x
+  display->saved_y
 }
 
 void MachineDisplay_clear(MachineDisplay *display) {
@@ -195,18 +200,29 @@ void MachineDisplay_clear(MachineDisplay *display) {
 void MachineDisplay_draw(MachineDisplay *display) {
   int i;
   int len;
+  int x, y;
 
-  MachineDisplay_clear();
-  for(int i = 0; i < display->machine->num_instructions; ++i) {
+  int instr_width = 6;
+  int cells_per_line = display->width / instr_width;
+
+  MachineDisplay_clear(display);
+  // for(int i = 0; i < display->machine->num_instructions; ++i) {
+  for(int i = 0; i < 504; ++i) {
+    x = (i % cells_per_line) * instr_width + 1;
+    y = i / cells_per_line + 1;
     if(i == display->machine->iptr) {
       MachineDisplay_save(display); /* Remember this location for later erasure */
       printf("\033[7m");
     }
-    int len = Instruction_print(display->machine->instructions + i);
-    printf(" ");
-    // for(int x = 0; x < (6 - len); ++x) {
-    //   printf(" ");
-    // }
-  }
 
+    MachineDisplay_goto(display, x, y);
+    len = Instruction_print(display->machine->instructions + i);
+  }
+}
+
+void MachineDisplay_redraw(MachineDisplay *display) {
+  MachineDisplay_revisit(display); /* return to highlighted iptr cell */
+  len = Instruction_print(display->machine->instructions + i);
+  x = (i % cells_per_line) * instr_width + 1;
+  y = i / cells_per_line + 1;
 }
