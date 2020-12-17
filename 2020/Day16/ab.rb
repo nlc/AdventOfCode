@@ -39,8 +39,63 @@ def good_tickets(nearby_tickets, rules)
   end
 end
 
-def part_b(rules, your_ticket, nearby_ticket)
-  
+# return an array of which field could correspond to which column
+def column_candidates(nearby_tickets, rules)
+  rows = good_tickets(nearby_tickets, rules)
+  num_columns = rows.first.length
+
+  columns =
+    num_columns.times.map do |i|
+      rows.map{|nearby_ticket|nearby_ticket[i]}
+    end
+
+  candidates =
+    rules.map do |name, ranges|
+      (0...columns.length).to_a.select do |i|
+        # does every element of the column match the rule
+        column = columns[i]
+        column.all? do |value|
+          ranges.first.include?(value) || ranges.last.include?(value)
+        end
+      end
+    end
+end
+
+# figure out which columns have only one possibility and remove that index from the others
+def reduce_candidates(columns)
+  if columns.any?{|column|column.length == 0}
+    raise 'Ran out of candidates!'
+  end
+
+  fixed_columns = columns.select{|column|column.length == 1}
+  if fixed_columns.length == 0
+    raise 'Simple reduction ain\'t gonna cut it!'
+  end
+
+  taken_indices = fixed_columns.flatten
+
+  columns.map do |column|
+    if column.length > 1
+      column - taken_indices
+    else
+      column
+    end
+  end
+end
+
+def part_b(rules, your_ticket, nearby_tickets)
+  new_candidates = column_candidates(nearby_tickets, rules)
+  candidates = nil
+
+  until new_candidates == candidates
+    candidates = new_candidates
+    new_candidates = reduce_candidates(candidates)
+  end
+
+  field_to_column = rules.keys.zip(candidates.flatten).to_h
+  p field_to_column
+
+  field_to_column.select{|k, _v|k=~/^departure/}.map{|_k, v|your_ticket[v]}.inject(:*)
 end
 
 fname = ARGV.shift
@@ -83,6 +138,5 @@ File.readlines(fname, chomp: true).each do |line|
   end
 end
 
-# puts part_a(rules, your_ticket, nearby_tickets)
-
-# Since 20! > 1E18 it doesn't look like we're going to be brute forcing Part B
+puts part_a(rules, your_ticket, nearby_tickets)
+puts part_b(rules, your_ticket, nearby_tickets)

@@ -1,8 +1,3 @@
-Advent of Code[About][Events][Shop][Settings][Log Out]nlc 31*
-   $year=2020;[Calendar][AoC++][Sponsors][Leaderboard][Stats]
-Our sponsors help make Advent of Code possible:
-Juni Learning - We're an online Computer Science academy for ages 8-18. Our
-students love AoC, and we're hiring too! careers @ learnwithjuni.com
 --- Day 16: Ticket Translation ---
 As you're walking to yet another connecting flight, you realize that one of the
 legs of your re-routed trip coming up is on a high-speed train. However, the
@@ -73,8 +68,6 @@ scanning error rate?
 
 Your puzzle answer was 20231.
 
-The first half of this puzzle is complete! It provides one gold star: *
-
 --- Part Two ---
 Now that you've identified which tickets contain invalid values, discard those
 tickets entirely. Use the remaining valid tickets to determine which field is
@@ -105,9 +98,6 @@ Once you work out which field is which, look for the six fields on your ticket
 that start with the word departure. What do you get if you multiply those six
 values together?
 
-Answer:
+Your puzzle answer was 1940065747861.
 
-
-Although it hasn't changed, you can still get your puzzle input.
-
-You can also [Share] this puzzle.
+Both parts of this puzzle are complete! They provide two gold stars: **
