@@ -1,12 +1,20 @@
 NB. Embed matrix in a "halo" of zeros
-enhalodef =: (_1&|.)"1@(_1&|.)@((2:+$){.]) NB. probably very inelegant, applying that rotate twice explicitly
+NB. enhalodef =: (_1&|.)"1@(_1&|.)@((2:+$){.]) NB. probably very inelegant, applying that rotate twice explicitly
+flip=:|."1@|.
+edge =: ([:>:$){.]
+enhalodef =: edge@flip^:2
 
-NB. Tragically my J-fu isn't quite strong enough atm to come up with an implicit def
+NB. Tragically my J-fu isn't quite strong enough atm to come up with a tacit def
 unenhalodef =: monad define
   newdim =: _2+$y
   (1 1 ,: newdim) ];.0 y
 )
 enhalo =: enhalodef :. unenhalodef
+
+tacit =: 13 define
+  newdim =: _2+$y
+  (1 1 ,: newdim) ];.0 y
+)
 
 neighbors =: [:+/^:2(,"0/~@i:1)&|.
 combine =: dyad def '(x *. (y < 5)) +. ((-. x) *. (y = 0))'
