@@ -1,3 +1,5 @@
+NB. This one's for you, Ken. Happy 100th birthday!
+
 require '../../utilities/readlines.ijs'
 
 NB. Highly useful odometer function from https://code.jsoftware.com/wiki/Essays/Odometer
