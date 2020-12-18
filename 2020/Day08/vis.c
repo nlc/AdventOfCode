@@ -6,7 +6,7 @@ int main(int argc, char **argv) {
   Machine machine;
   MachineDisplay display;
   int found = 0;
-  int width = 130, height = 27;
+  int width = 180, height = 66;
   int i = 0;
 
   if(argc < 2) {
@@ -23,7 +23,7 @@ int main(int argc, char **argv) {
 
   MachineDisplay_init(&display, &machine, width, height);
 
-  for(i = 0; machine.iptr < 504; i++) {
+  for(i = 0; i < 1000 && machine.iptr < 6000; i++) {
     MachineDisplay_draw(&display);
     Machine_execute(&machine);
     fflush(stdout);

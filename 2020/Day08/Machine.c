@@ -187,8 +187,9 @@ void MachineDisplay_revisit(MachineDisplay *display) {
 
   MachineDisplay_goto(display, display->saved_x, display->saved_y);
 
-  display->saved_x
-  display->saved_y
+  temp = display->saved_x;
+  display->saved_x = display->saved_y;
+  display->saved_y = temp;
 }
 
 void MachineDisplay_clear(MachineDisplay *display) {
@@ -206,8 +207,8 @@ void MachineDisplay_draw(MachineDisplay *display) {
   int cells_per_line = display->width / instr_width;
 
   MachineDisplay_clear(display);
-  // for(int i = 0; i < display->machine->num_instructions; ++i) {
-  for(int i = 0; i < 504; ++i) {
+  for(int i = 0; i < display->machine->num_instructions; ++i) {
+  // for(int i = 0; i < 6000 && i < display->machine->num_instructions; ++i) {
     x = (i % cells_per_line) * instr_width + 1;
     y = i / cells_per_line + 1;
     if(i == display->machine->iptr) {
@@ -220,9 +221,9 @@ void MachineDisplay_draw(MachineDisplay *display) {
   }
 }
 
-void MachineDisplay_redraw(MachineDisplay *display) {
-  MachineDisplay_revisit(display); /* return to highlighted iptr cell */
-  len = Instruction_print(display->machine->instructions + i);
-  x = (i % cells_per_line) * instr_width + 1;
-  y = i / cells_per_line + 1;
-}
+// void MachineDisplay_redraw(MachineDisplay *display) {
+//   MachineDisplay_revisit(display); /* return to highlighted iptr cell */
+//   len = Instruction_print(display->machine->instructions + i);
+//   x = (i % cells_per_line) * instr_width + 1;
+//   y = i / cells_per_line + 1;
+// }
