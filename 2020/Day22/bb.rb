@@ -7,33 +7,14 @@ $game = 0
 def play_subgame(hand_a, hand_b)
   ma = hand_a.max
   mb = hand_b.max
+
   if ma > mb
-    return 'a'
+    'a'
+  elsif ma < mb
+    'b'
+  else
+    raise 'Equal cards!(?)'
   end
-
-  $game += 1
-  # puts "game #{$game}"
-
-  # visited = Set.new
-  visited = Hash.new
-
-  num_rounds = 0
-  repeat = false
-  until hand_a.empty? || hand_b.empty? || repeat
-    # visited_key = [hand_a, hand_b]
-    # return 'a' if visited.include?(visited_key)
-    # visited.add(visited_key)
-    visited_key = [hand_a, hand_b]
-    return 'a' if visited.key?(visited_key) && visited[visited_key] == visited_key
-    visited[visited_key] = visited_key
-
-    play_round(hand_a, hand_b)
-    num_rounds += 1
-  end
-
-  $visited_sizes[visited.hash] = visited.size
-
-  hand_b.empty? ? 'a' : 'b'
 end
 
 def play_round(hand_a, hand_b)
