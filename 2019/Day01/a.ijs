@@ -1,4 +1,4 @@
-require '../utilities/readlines.ijs'
+require '../utilities/utils.ijs'
 input =: readlines 'input.txt'
 
 NB. to find the fuel required for a module, take its mass, divide by three, round down, and subtract 2.

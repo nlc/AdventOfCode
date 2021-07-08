@@ -1,4 +1,4 @@
-require '../utilities/readlines.ijs'
+require '../utilities/utils.ijs'
 
 signal =: , readlines 'input_cheat.txt'
 
