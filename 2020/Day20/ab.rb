@@ -66,7 +66,7 @@ illegal_ids =
   tiles.select do |_key, tile|
     !(2..4).include?(tile[:neighbors].length)
   end.keys
-raise("#{illegal_ids.inspect} have an imposisble number of neighbors!") if illegal_ids.any?
+raise("#{illegal_ids.inspect} have an impossible number of neighbors!") if illegal_ids.any?
 
 # puts "Part A: \033[1m#{corner_ids.inject(:*)}\033[0m"
 

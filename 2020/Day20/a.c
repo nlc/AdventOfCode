@@ -169,6 +169,8 @@ int main(int argc, char **argv) {
   int line_index;
 
   uint8_t fit;
+  uint8_t fit_i;
+  uint8_t fit_j;
 
   uint64_t n_corners = 0, nbr_product = 1;
 
@@ -212,6 +214,8 @@ int main(int argc, char **argv) {
   }
   fclose(file);
 
+  printf("Loaded %d tiles.\n", num_tiles);
+
   for(i = 0; i < num_tiles; ++i) {
     Tile_dump(tiles+i);
   }
@@ -222,13 +226,18 @@ int main(int argc, char **argv) {
       tile_b = tiles + j;
 
       fit = Tile_fit(tile_a, tile_b);
-      printf("%"PRIu8"\n", fit);
-
+      printf("%"PRIu8"", fit);
+      if(fit != 255) {
+        fit_i = (fit >> 4);
+        fit_j = (fit & 0xF);
+        printf(" (i=%"PRIu8"; j=%"PRIu8")", fit_i, fit_j);
+      }
+      printf("\n");
     }
   }
 
   for(i = 0; i < num_tiles; ++i) {
-    printf("%"PRIu16" -> %"PRIu64" nbrs \n", tiles[i].index, tiles[i].num_neighbors);
+    printf("%"PRIu16" -> %"PRIu64" nbrs\n", tiles[i].index, tiles[i].num_neighbors);
     if(tiles[i].num_neighbors == 2) {
       printf("corner? %"PRIu16"\n", tiles[i].index);
       ++n_corners;
