@@ -1,6 +1,9 @@
+require 'format/printf'
+
 cmds =: 'off' ; 'on' ; 'toggle'
 input =: (((cmds i. _8 { ]) ; ([: ". [: > _7 _5 _3 _1 { ])) [: ;: ])"1 cutopen@(1!:1)&.< 'input.txt'
-ops =: >`+.`~:@.
+opsa =: >`+.`~:@. NB. OPerationS for part A
+opsb =: (0>.-)`+`(+[:>:])@. NB. OPerationS for part B
 
 Note 'Strategy'
 Create a new matrix of 1s in the relevant area surrounded by 0s
@@ -11,25 +14,46 @@ and choose the relevant operator:
 )
 
 s =: 1000 1000 NB. Size
-s =: 20 20 NB. Size
 gg =: 1 : '(-x) |. m {. y $ 1' NB. Generate mask Generator
 gm =: s gg NB. Generate Mask
 
-bf =: s $ 0 NB. Binary Field
-
 mc =: 2&{. ([ gm >:@-@-) _2&{. NB. Mask from Coordinates
 
-fakeinputraw =: 'toggle 0,1 through 2,5' ; 'turn on 0,7 through 15,8' ; 'ttoggle 14,0 through 14,19'
-fakeinput =: (((cmds i. _8 { ]) ; ([: ". [: > _7 _5 _3 _1 { ])) [: ;: ])"1 > fakeinputraw
+NB. s =: 20 20 NB. Size
+NB. fakeinputraw =: 'toggle 0,1 through 2,5' ; 'turn on 0,7 through 15,8' ; 'toggle 14,0 through 14,19'
+NB. fakeinput =: (((cmds i. _8 { ]) ; ([: ". [: > _7 _5 _3 _1 { ])) [: ;: ])"1 > fakeinputraw
+NB. echo fakeinput
 
-echo fakeinput
-
-iter =: 3 : 0
-  op =: (> {. {. y) ops
-  echo 1 op 1
-  bf =: bf (1 ops) (mc 2 3 8 5)
+ia =: 3 : 0 NB. Iterate for part A
+  op =. (> {. y) opsa
+  bm =. mc > {: y NB. BitMask
+  bf =: bf op bm
+  '' NB. Hacky
 )
 
-iter fakeinput
+ib =: 3 : 0 NB. Iterate for part B
+  op =. (> {. y) opsb
+  bm =. mc > {: y NB. BitMask
+  bf =: bf op bm
+  echo bf
+  '' NB. Hacky
+)
 
-NB. exit 1
+day06a =: 3 : 0
+  bf =: s $ 0 NB. Binary Field
+  ia"1 input
+  +/^:_ bf
+)
+
+day06b =: 3 : 0
+  bf =: s $ 0 NB. Binary Field
+  ib"1 input
+  +/^:_ bf
+)
+
+NB. Print answers
+echo 'Day 06:'
+'  Part A: %d' printf day06a input
+'  Part B: %d' printf day06b input
+
+exit 1
