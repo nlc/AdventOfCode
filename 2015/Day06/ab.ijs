@@ -3,7 +3,7 @@ require 'format/printf'
 cmds =: 'off' ; 'on' ; 'toggle'
 input =: (((cmds i. _8 { ]) ; ([: ". [: > _7 _5 _3 _1 { ])) [: ;: ])"1 cutopen@(1!:1)&.< 'input.txt'
 opsa =: >`+.`~:@. NB. OPerationS for part A
-opsb =: (0>.-)`+`(+[:>:])@. NB. OPerationS for part B
+opsb =: (0>.-)`+`([+2*])@. NB. OPerationS for part B
 
 Note 'Strategy'
 Create a new matrix of 1s in the relevant area surrounded by 0s
@@ -35,7 +35,6 @@ ib =: 3 : 0 NB. Iterate for part B
   op =. (> {. y) opsb
   bm =. mc > {: y NB. BitMask
   bf =: bf op bm
-  echo bf
   '' NB. Hacky
 )
 
