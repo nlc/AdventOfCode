@@ -1,6 +1,3 @@
-# require 'awesome_print'
-require 'set'
-
 $visited_sizes = {}
 
 $game = 0
