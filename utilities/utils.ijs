@@ -1,7 +1,8 @@
 NB. TODO: Rename this file. It's not just readlines anymore
 
-readlines =: 3 : '".(>cutopen (1!:1) < y)'
+readlines =: 3 : '(>cutopen (1!:1) < y)'
 readchars =: 3 : '>cutopen (1!:1) < y'
+readwords =: cutopen@fread
 
 run =: dyad def '(1 ,: x) ] ;._3 y'
 
@@ -18,3 +19,6 @@ unenhalo2ddef =: monad define
   (1 1 ,: newdim) ];.0 y
 )
 enhalo2d =: enhalo2ddef :. unenhalo2ddef
+
+NB. https://code.jsoftware.com/wiki/Essays/Odometer
+odometer=: #: i.@(*/)
