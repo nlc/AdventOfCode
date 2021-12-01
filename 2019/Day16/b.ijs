@@ -1,4 +1,4 @@
-require '../utilities/utils.ijs'
+require '../../utilities/utils.ijs'
 
 NB. signal =: ($~10000*$) , readlines 'input_cheat.txt'
 

@@ -1,8 +1,8 @@
-require '../utilities/utils.ijs'
+require '../../utilities/utils.ijs'
 
 (9!:37)0 _ _ _
 
-lines =: readlines 'input_cheating.txt'
+lines =: ". readlines 'input_cheating.txt'
 
 data =: 100 6 25 $,lines
 
