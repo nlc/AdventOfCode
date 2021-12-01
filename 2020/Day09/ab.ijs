@@ -4,7 +4,7 @@ NB. part a
 NB. data =: 35 20 15 25 47 40 62 55 65 95 102 117 150 182 127 219 299 277 309 576
 NB. runlength =: 5
 
-data =: readlines 'input.txt'
+data =: ". readlines 'input.txt'
 runlength =: 25
 
 xx =: 1 ,: runlength
