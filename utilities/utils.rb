@@ -1,25 +1,27 @@
-def rl(fname)
+require 'pp'
+
+def readlines(fname)
   File.readlines(fname, chomp: true)
 end
 
-def rli(fname)
-  rli(fname).map(&:to_i)
+def ireadlines(fname)
+  readlines(fname).map(&:to_i)
 end
 
-def rc(fname)
+def readchars(fname)
   File.read(fname)
 end
 
-def rci(fname)
-  rc(fname).map(&:to_i)
+def ireadchars(fname)
+  readchars(fname).map(&:to_i)
 end
 
-def rw(fname)
+def readwords(fname)
   File.read(fname).split(/\s+/)
 end
 
-def rwi(fname)
-  rw(fname).map(&:to_i)
+def ireadwords(fname)
+  readwords(fname).map(&:to_i)
 end
 
 inp = 'input.txt'
