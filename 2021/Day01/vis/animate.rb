@@ -71,6 +71,7 @@ t = 0
 print "\033[?25l"
 80.times do
   print "\033[2J\033[H"
+  # draw_sprite(sub, 10 + (2 * Math.sin(t / 2.0)).to_i, 10, "\033[31m")
   draw_sprite(sub, 3 + (2 * Math.sin(t / 2.0)).to_i, 10, "\033[31m")
   draw_waves
   draw_seafloor(t)

@@ -1,4 +1,3 @@
-require 'format/printf'
 require '../../utilities/utils.ijs'
 
 input =: ". readlines 'input.txt'
