@@ -14,6 +14,7 @@ movs =: ns * {: (0 1 2 ="0 1 ds)
 depths =: +/ movs * aims
 horizs =: +/ movs
 
+NB. Day 02 Part A solution
 day02b =: depths * horizs
 
 NB Print answers
