@@ -37,15 +37,21 @@ bold =: monad define
 )
 
 
-
-flip2d=:|."1@|.
-edge2d =: ([:>:$){.]
-enhalo2ddef =: edge2d@flip2d^:2
-unenhalo2ddef =: monad define
-  newdim =: _2+$y
-  (1 1 ,: newdim) ];.0 y
+Note 'obsolete'
+  flip2d=:|."1@|.
+  edge2d =: ([:>:$){.]
+  enhalo2ddef =: edge2d@flip2d^:2
+  unenhalo2ddef =: monad define
+    newdim =: _2+$y
+    (1 1 ,: newdim) ];.0 y
+  NB. haha parsing )
+  enhalo2d =: enhalo2ddef :. unenhalo2ddef
 )
-enhalo2d =: enhalo2ddef :. unenhalo2ddef
+
+rimfwd =: (0&$: :(4 : '_1 _1 |. (2&+@$y) ({.!.x) y'))"2
+NB. riminv =: _2&+@$ {. 1 1 |. ] NB. breaks when given a left arg
+riminv =: (0&$: :(4 : '(_2&+@$ {. 1 1 |. ])y'))"2
+rim =: rimfwd :. riminv
 
 NB. https://code.jsoftware.com/wiki/Essays/Odometer
 odometer=: #: i.@(*/)
