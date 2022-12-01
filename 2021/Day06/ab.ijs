@@ -16,4 +16,4 @@ echo 'Day 06:'
 '  Part A: %d' printf day06a tallies
 '  Part B: %d' printf day06b tallies
 
-NB. exit 1
+exit 1
