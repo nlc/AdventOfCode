@@ -1,7 +1,7 @@
 require '../../utilities/utils.rb'
 
 def outcome(they, we)
-  if we + 3 - they == 4 || (they == 2 && we == 0)
+  if (we - they) % 3 == 1
     :win
   elsif we == they
     :draw
