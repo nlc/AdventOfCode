@@ -28,7 +28,8 @@ inputfile =: 'input.txt'
 
 run =: dyad def '(1 ,: x) ] ;._3 y'
 
-ord =: 97 -~ a. i. ]
+ascii =: a. i. ]
+ord =: 97 -~ ascii
 chr =: ord^:_1
 
 NB. kind of sucks because no apparent way to avoid a newline
