@@ -4,6 +4,10 @@ def _memo_init()
   $memo_table = {}
 end
 
+def fuck
+  puts 'fuck'
+end
+
 def _memo(method, *args)
   memo_key = [method, args]
   return $memo_table[memo_key] if $memo_table.key? memo_key

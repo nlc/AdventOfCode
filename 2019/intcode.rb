@@ -1,14 +1,19 @@
 # the definitive version as of Day 11
 
+# TODO: check that this works with day 15
+# TODO: Add resetting
+
 require 'byebug'
 
 class Intcode
   def initialize(fname, _debug = false)
     @memory = File.read(fname).split(/,/).map{|n|n.to_i}
     @memory = @memory + ([0] * 2048)
+    @orig_memory = @memory.clone
     @ipointer = 0
     @relbase = 0
     @running = true
+    @step = 0
 
     @opcodes = {
       1 => {
@@ -68,6 +73,14 @@ class Intcode
     # execute
   end
 
+  def reset
+    @memory = @orig_memory.clone
+    @ipointer = 0
+    @relbase = 0
+    @running = true
+    @step = 0
+  end
+
   def setmemory(index, value)
     @memory[index] = value
   end
@@ -81,6 +94,8 @@ class Intcode
     output = []
     cont = true
     while cont do
+      @step += 1
+
       if input && @input_optr
         @memory[@input_optr] = input
         @input_optr = nil
@@ -113,6 +128,7 @@ class Intcode
       end
 
       if @debug
+        printf(' % 5d', @step)
         print "  #{'%04d' % @ipointer}"
         print " ++#{'%-4d' % @relbase}"
         print " #{opcode[:name]}"
