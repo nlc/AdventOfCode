@@ -18,6 +18,6 @@ def day04b(input)
   end
 end
 
-puts 'Day 01:'
+puts 'Day 04:'
 puts "  Part A: #{day04a(input)}"
 puts "  Part B: #{day04b(input)}"
