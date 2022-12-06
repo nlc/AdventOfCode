@@ -89,11 +89,24 @@ def rows(max_width = 200)
   row_info
 end
 
-max_width = 250
-all_rows_data = rows(max_width)
+#all rows data
+def write_all_rows_data(max_width)
+  all_rows_data = rows(max_width)
 
-File.open("all_rows_data_w#{max_width}.txt", 'w') do |file|
-  all_rows_data.each do |k, v|
-    file.puts "#{k}\t#{v.join("\t")}"
+  File.open("all_rows_data_w#{max_width}.txt", 'w') do |file|
+    all_rows_data.each do |k, v|
+      file.puts "#{k} #{v.join("\t")}"
+    end
   end
+end
+
+$all_rows_data =
+  File.readlines('all_rows_data_w250.txt').map do |line|
+    y, start, length = line.match(/(\d+) (\d+) (\d+)/).to_a.drop(1).map(&:to_i)
+
+    [y, start..(start + length - 1)]
+  end.to_h
+
+def in?(x, y)
+  $all_rows_data[y].include?(x)
 end
