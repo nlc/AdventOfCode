@@ -1,7 +1,7 @@
-def crane(orig_stacks, reverse)
+def crane(orig_stacks, instructions, reverse)
   stacks = orig_stacks.map(&:dup)
 
-  File.readlines('instructions.txt').each_with_index do |instruction, i|
+  instructions.each_with_index do |instruction, i|
     amount, target, destination = instruction.chomp.match(/move (\d+) from (\d) to (\d)/).to_a.drop(1).map(&:to_i)
 
     if stacks[target].any?
@@ -23,19 +23,21 @@ def crane(orig_stacks, reverse)
   stacks[1..-1].map(&:last).join
 end
 
-def day05a(orig_stacks)
-  crane(orig_stacks, true)
+def day05a(orig_stacks, instructions)
+  crane(orig_stacks, instructions, true)
 end
 
-def day05b(orig_stacks)
-  crane(orig_stacks, false)
+def day05b(orig_stacks, instructions)
+  crane(orig_stacks, instructions, false)
 end
 
 orig_stacks = Array.new(10)
-File.readlines('layout.txt').each_with_index do |line, i|
+File.readlines('christmas_message_layout.txt').each_with_index do |line, i|
   orig_stacks[i + 1] = line.chomp.chars
 end
 
+instructions = File.readlines('christmas_message_instructions.txt')
+
 puts 'Day 05:'
-puts "  Part A: #{day05a(orig_stacks)}"
-puts "  Part B: #{day05b(orig_stacks)}"
+puts "  Part A: #{day05a(orig_stacks, instructions)}"
+puts "  Part B: #{day05b(orig_stacks, instructions)}"
