@@ -36,10 +36,6 @@ num_visible = 0
       # visibility << 'DOWN'
     end
 
-    if x == 0 || x == (w - 1) || y == 0 || y == (h - 1)
-      is_visible = true
-    end
-
     if is_visible
       # puts "#{tree} at <#{x}, #{y}> is visible from #{visibility.join('/')}!"
       num_visible += 1
