@@ -108,5 +108,16 @@ $all_rows_data =
   end.to_h
 
 def in?(x, y)
-  $all_rows_data[y].include?(x)
+  $all_rows_data[y]&.include?(x) || false
 end
+
+square_size = 100
+offset = square_size - 1
+
+bottom_left_corner =
+  $all_rows_data.to_a.find do |y, range|
+    x = range.begin
+    in?(x + offset, y - offset)
+  end
+
+puts bottom_left_corner[1].begin * 10000 + (bottom_left_corner[0] - offset)
