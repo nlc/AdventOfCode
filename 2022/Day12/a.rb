@@ -1,9 +1,10 @@
 require 'set'
+require 'byebug'
 
 # neigbors: hash of unique node key to array of neigbors
 # costs: optional hash of pairs of unique node keys to their (directed) edge cost
 # 
-def dijkstra(neighbors:, costs: nil, start_node:, end_node:)
+def dijkstra(neighbors:, costs: nil, start_node:, end_node: nil)
   # populate "unvisited" set
   unvisited_nodes = Set.new(neighbors.keys)
 
@@ -11,14 +12,14 @@ def dijkstra(neighbors:, costs: nil, start_node:, end_node:)
   tentative_distances = neighbors.keys.map { |node| [node, Float::INFINITY] }.to_h
   tentative_distances[start_node] = 0
 
+  # declare hash of predecessors of nodes
+  predecessors = {}
+
   # set starting point
   current_node = start_node
 
   # iterate
-  i = 0 # delete me
-  while unvisited_nodes.include?(end_node) && i < 1000
-    i += 1
-
+  while unvisited_nodes.any? && !current_node.nil? && current_node != end_node
     unvisited_neighbors = neighbors[current_node].select { |neighbor| unvisited_nodes.include?(neighbor) }
 
     unvisited_neighbors.each do |unvisited_neighbor|
@@ -26,18 +27,17 @@ def dijkstra(neighbors:, costs: nil, start_node:, end_node:)
 
       if new_neighbor_tentative_distance < tentative_distances[unvisited_neighbor]
         tentative_distances[unvisited_neighbor] = new_neighbor_tentative_distance
+        predecessors[unvisited_neighbor] = current_node
       end
     end
 
     # once all unvisited neighbors have been considered, mark the current node as having been visited
     unvisited_nodes.delete(current_node)
 
-    if unvisited_nodes.include?(end_node) # if we still haven't found it, then set a new current_node to look at
-      current_node = tentative_distances.select{ |k, v| unvisited_nodes.include?(k) }.min_by{ |k, v| v }.first
-    end
+    current_node = tentative_distances.select{ |k, v| unvisited_nodes.include?(k) }.min_by{ |k, v| v }&.first # FIXME this is bad
   end
 
-  tentative_distances[end_node]
+  [tentative_distances, predecessors]
 end
 
 
@@ -80,9 +80,9 @@ heightmap.map.with_index do |line, y|
       newy = y + dy
 
       if (0...hm_width).include?(newx) && (0...hm_height).include?(newy)
-        newheight = heightmap[y][x]
+        newheight = heightmap[newy][newx]
 
-        if (!newheight.nil?) && (newheight - height).abs <= 1
+        if (!newheight.nil?) && newheight - height <= 1
           neighbors[[x, y]] << [newx, newy]
         end
       end
@@ -98,5 +98,5 @@ heightmap.map.with_index do |line, y|
   end
 end
 
-p dijkstra(neighbors: neighbors, start_node: start_node, end_node: end_node)
-p neighbors
+tentative_distances, _ = dijkstra(neighbors: neighbors, start_node: start_node, end_node: end_node)
+puts tentative_distances[end_node]
