@@ -29,8 +29,8 @@ nbr_directions = [
 ]
 
 neighbors = {}
-start_node = nil
-end_node = nil
+plains_nodes = []
+summit_node = nil
 
 heightmap.map.with_index do |line, y|
   line.map.with_index do |height, x|
@@ -43,21 +43,22 @@ heightmap.map.with_index do |line, y|
       if (0...hm_width).include?(newx) && (0...hm_height).include?(newy)
         newheight = heightmap[newy][newx]
 
-        if (!newheight.nil?) && newheight - height <= 1
+        if (!newheight.nil?) && height - newheight <= 1
           neighbors[[x, y]] << [newx, newy]
         end
       end
     end
 
-    if height == 0
-      start_node = [x, y]
+    if height == 1
+      plains_nodes << [x, y]
     end
 
     if height == 27
-      end_node = [x, y]
+      summit_node = [x, y]
     end
   end
 end
 
-tentative_distances, _ = dijkstra(neighbors: neighbors, start_node: start_node, end_node: end_node)
-puts tentative_distances[end_node]
+tentative_distances, _ = dijkstra(neighbors: neighbors, start_node: summit_node)
+
+puts plains_nodes.map { |plains_node| tentative_distances[plains_node] }.min
