@@ -1,5 +1,3 @@
-require 'set'
-
 require './dijkstra.rb'
 
 fname = ARGV.shift || 'input.txt'
