@@ -1,24 +1,16 @@
 def compare(left, right)
-  print "  #{left.inspect} VS #{right.inspect}  " if $debug
   case [left, right]
   in [NilClass, *] # left ran out
-    puts "left ran out of inputs" if $debug
     return -1
   in [*, NilClass] # right ran out
-    puts "right ran out of inputs" if $debug
     return 1
   in [Integer, Integer]
-    puts "integers; left <=> right" if $debug
     return left <=> right
   in [Integer, Array]
-    puts "mixed types, convert left to [#{left}] and retry" if $debug
     return compare([left], right)
   in [Array, Integer]
-    puts "mixed types, convert right to [#{right}] and retry" if $debug
     return compare(left, [right])
   in [Array, Array]
-    puts "arrays; try each" if $debug
-
     left.zip(right).each do |subleft, subright|
       comparison = compare(subleft, subright)
       return comparison unless comparison == 0
@@ -35,7 +27,6 @@ def day13a(input_raw)
 
   input.map.with_index do |pair, i|
     addend = (compare(*pair) < 1) ? (i + 1) : 0
-    puts if $debug
 
     addend
   end.sum
@@ -53,5 +44,6 @@ end
 fname = ARGV.shift || 'input.txt'
 input_raw = File.read(fname)
 
-p day13a(input_raw)
-p day13b(input_raw)
+puts 'Day 13:'
+puts "  Part A: #{day13a(input_raw)}"
+puts "  Part B: #{day13b(input_raw)}"
