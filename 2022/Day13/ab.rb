@@ -1,25 +1,23 @@
 def compare(left, right)
   case [left, right]
   in [NilClass, *] # left ran out
-    return -1
+    -1
   in [*, NilClass] # right ran out
-    return 1
+    1
   in [Integer, Integer]
-    return left <=> right
+    left <=> right
   in [Integer, Array]
-    return compare([left], right)
+    compare([left], right)
   in [Array, Integer]
-    return compare(left, [right])
+    compare(left, [right])
   in [Array, Array]
     left.zip(right).each do |subleft, subright|
       comparison = compare(subleft, subright)
       return comparison unless comparison == 0
     end
 
-    return left.length <=> right.length
+    left.length <=> right.length
   end
-
-  raise 'oops'
 end
 
 def day13a(input_raw)
