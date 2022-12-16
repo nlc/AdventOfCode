@@ -128,9 +128,9 @@ sensor_max_dists =
     [sensor, dist]
   end.to_h
 
-
-# puts day15a(sensor_beacons, sensor_max_dists, target_row)
-p day15b(sensor_beacons, sensor_max_dists)
+puts "Day 15:"
+puts "  Part A: #{day15a(sensor_beacons, sensor_max_dists, target_row)}"
+puts "  Part B: #{day15b(sensor_beacons, sensor_max_dists)}"
 
 
 
