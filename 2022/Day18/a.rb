@@ -43,17 +43,11 @@ File.readlines('input.txt', chomp: true).each do |line|
 end
 
 lava_neighbors = {}
+air_neighbors = {}
 
 lava.each do |coords|
-  coords_lava_neighbors = gen_lava_neighbors(coords, lava).select do |coords_neighbor|
-    lava.include?(coords_neighbor)
-  end
-
-  coords_air_neighbors = gen_air_neighbors(coords, lava).select do |coords_neighbor|
-    lava.include?(coords_neighbor)
-  end
-
-  lava_neighbors[coords] = coords_lava_neighbors
+  lava_neighbors[coords] = gen_lava_neighbors(coords, lava)
+  air_neighbors[coords] = gen_air_neighbors(coords, lava)
 end
 
 def day18a(lava_neighbors, min, max)
@@ -95,6 +89,9 @@ def flood_fill(lava, min, max)
   distances
 end
 
+# Find all surface blocks
+# Iterate through each air_neighbor of each surface block
+# Count it if it has a distance of less than infinity
 def day18b(lava, lava_neighbors, min, max)
   distances = flood_fill(lava, min, max)
 
