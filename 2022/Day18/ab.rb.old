@@ -1,4 +1,5 @@
 require 'set'
+require 'byebug'
 
 ORTHO_NEIGHBORHOOD = [
   [1, 0, 0],
@@ -42,18 +43,18 @@ File.readlines('input.txt', chomp: true).each do |line|
   lava.add(coords)
 end
 
-lava_neighbors = {}
-air_neighbors = {}
+lava_lava_neighbors = {}
+lava_air_neighbors = {}
 
 lava.each do |coords|
-  lava_neighbors[coords] = gen_lava_neighbors(coords, lava)
-  air_neighbors[coords] = gen_air_neighbors(coords, lava)
+  lava_lava_neighbors[coords] = gen_lava_neighbors(coords, lava)
+  lava_air_neighbors[coords] = gen_air_neighbors(coords, lava)
 end
 
-def day18a(lava_neighbors, min, max)
+def day18a(lava_lava_neighbors, lava_air_neighbors, min, max)
   num_exposed_faces =
-    lava_neighbors.map do |coord, coord_neighbors|
-      6 - coord_neighbors.length
+    lava_lava_neighbors.map do |coord, coord_neighbors|
+      lava_air_neighbors[coord].length
     end.sum
 
   num_exposed_faces
@@ -92,27 +93,33 @@ end
 # Find all surface blocks
 # Iterate through each air_neighbor of each surface block
 # Count it if it has a distance of less than infinity
-def day18b(lava, lava_neighbors, min, max)
+def day18b(lava, lava_lava_neighbors, lava_air_neighbors, min, max)
   distances = flood_fill(lava, min, max)
 
   outside_coords = Set.new
 
-  distances.each do |air_node, _|
-    gen_neighbors(air_node).each do |air_node_neighbor|
-      if lava.include?(air_node_neighbor)
-        outside_coords.add(air_node_neighbor)
-      end
+  # distances.each do |air_node, distance|
+  #   gen_neighbors(air_node).each do |air_node_neighbor|
+  #     if lava.include?(air_node_neighbor)
+  #       outside_coords.add(air_node_neighbor)
+  #     end
+  #   end
+  # end
+
+  distances.each do |air_node, distance|
+    gen_lava_neighbors(air_node, lava).each do |lava_neighbor|
+      outside_coords.add(lava_neighbor)
     end
   end
 
   num_exposed_faces =
-    lava_neighbors.map do |coords, coord_neighbors|
-      outside_coords.include?(coords) ? (6 - coord_neighbors.length) : 0
+    outside_coords.map do |coords|
+      lava_air_neighbors[coords].length
     end.sum
 
   num_exposed_faces
 end
 
 puts 'Day 18:'
-puts "  Part A: #{day18a(lava_neighbors, min, max)}"
-puts "  Part B: #{day18b(lava, lava_neighbors, min, max)}"
+puts "  Part A: #{day18a(lava_lava_neighbors, lava_air_neighbors, min, max)}"
+puts "  Part B: #{day18b(lava, lava_lava_neighbors, lava_air_neighbors, min, max)}"
