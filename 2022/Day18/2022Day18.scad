@@ -2029,8 +2029,8 @@ voxels = [
 ];
 
 for(voxel = voxels) {
-  //if(voxel[2] <= max_slice || true) {
-  //  translate(voxel) cube();
-  //}
-  translate(voxel) cube();
+  if(voxel[2] <= max_slice) {
+    translate(voxel) cube();
+  }
+  //translate(voxel) cube();
 }
