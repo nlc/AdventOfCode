@@ -1,4 +1,5 @@
 require 'format/printf'
+require 'plot'
 
 readlines =: 3 : '(>cutopen (1!:1) < y)'
 ireadlines =: ".@readlines
