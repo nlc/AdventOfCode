@@ -173,6 +173,7 @@ int main(int argc, char **argv) {
   uint8_t fit_j;
 
   uint64_t n_corners = 0, nbr_product = 1;
+  uint64_t n_edges = 0;
 
   Tile *tile_a, *tile_b;
 
@@ -242,10 +243,14 @@ int main(int argc, char **argv) {
       printf("corner? %"PRIu16"\n", tiles[i].index);
       ++n_corners;
       nbr_product *= tiles[i].index;
+    } else if(tiles[i].num_neighbors == 3) {
+      printf("edge? %"PRIu16"\n", tiles[i].index);
+      ++n_edges;
     }
   }
 
   printf("%"PRIu64" corners found\n", n_corners);
+  printf("%"PRIu64" edges found\n", n_edges);
   printf("%"PRIu64"\n", nbr_product);
 
   return 0;
