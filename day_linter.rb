@@ -30,6 +30,9 @@ def parse_contents(path, contents)
     if !contents.grep(/^ab?\./).any?
       complaints << :noscript
     end
+
+    # TODO: Check for matching "day" name in puzzle.txt
+    # TODO: Somehow check for proper formatting of output of ab.whatever?
   end
 
   complaints
@@ -60,7 +63,7 @@ opt_parser.parse!
       [day, complaints]
     end.to_h
 
-  unless year_days.nil?
+  unless year_days.compact.all? { |day, complaints| complaints.empty? }
     puts "#{year}:"
     year_days.compact.each do |day, complaints|
       case complaints.length
