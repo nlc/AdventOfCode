@@ -22,4 +22,12 @@ def day02a(data)
   end.sum(&:first)
 end
 
-p day02a(data)
+def day02b(data)
+  data.map do |id, handfuls|
+    handfuls.transpose.map(&:max).reduce(&:*)
+  end.sum
+end
+
+puts 'Day 02:'
+puts "  Part A: #{day02a(data)}"
+puts "  Part B: #{day02b(data)}"
