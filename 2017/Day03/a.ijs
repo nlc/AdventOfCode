@@ -1,2 +1,4 @@
 manhattan =: ([: +/ |) :([: +/ |@-)
-([:*:1+2*])^:(_1) 8 9 10 11 NB. Establish wjat ring it's in
+ring =: [: >. ([:*:1+2*])^:(_1) NB. Establish wjat ring it's in
+
+input =: ". fread 'input.txt'
