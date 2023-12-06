@@ -6,14 +6,17 @@ YEARS =
   end.sort
 
 puts "# [Advent of Code](https://adventofcode.com/)"
-# puts "### By Year:"
 YEARS.each do |year|
-  puts "### [#{File.basename(year)}](#{year})"
+  puts "<details#{' open' if year == YEARS.last}>"
+  puts "<summary><h3><a href=#{year}>#{File.basename(year)}</a></h3></summary>"
 
-  year_days = Dir.glob("#{year}/*").select { |item| File.basename(item) =~ /Day\d{2}/ }.sort
+  # puts "### [#{File.basename(year)}](#{year})"
+
+  year_days = Dir.glob("#{year}/*").select { |item| File.basename(item) =~ /^Day\d{2}$/ }.sort
 
   year_days.each do |year_day|
-    print "[#{File.basename(year_day).gsub(/Day/, '')}](#{year_day}) "
+    # print "[#{File.basename(year_day).gsub(/Day/, '')}](#{year_day}) "
+    puts "<a href=#{year_day}>#{File.basename(year_day).gsub(/Day/, '')}</a>"
   end
-  puts
+  puts '</details>'
 end
