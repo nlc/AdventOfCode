@@ -9,7 +9,7 @@ Note 'Equation'
     a < -x^2 + bx; i.e.
     0 < -x^2 + bx - a
 
-    The equation is quadratic and strictly convex (f''(x) < 1). Identify the zeros with the
+    The equation is quadratic and strictly convex (f''(x) < 0). Identify the zeros with the
     quadratic formula, then calculate how many integers lie strictly within those endpoints.
 )
 
