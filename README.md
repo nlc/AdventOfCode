@@ -140,4 +140,5 @@
 <a href=./2023/Day04>04</a>
 <a href=./2023/Day05>05</a>
 <a href=./2023/Day06>06</a>
+<a href=./2023/Day07>07</a>
 </details>
