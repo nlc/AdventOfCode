@@ -9,6 +9,7 @@ COMPLAINT_MESSAGES = {
   missing: 'folder is missing',
   empty: 'folder is empty',
   nopuzzle: 'lacks puzzle.txt',
+  puzztitle: 'puzzle.txt lacks properly-formatted title',
   noinput: 'lacks input.txt',
   noscript: 'lacks properly-named script'
 }
@@ -19,7 +20,12 @@ def parse_contents(path, contents)
   if contents.empty?
     complaints << :empty
   else
-    if !contents.include?('puzzle.txt')
+    if contents.include?('puzzle.txt')
+      puzzle_txt_lines = File.readlines("#{path}/puzzle.txt", chomp: true)
+      if puzzle_txt_lines.first !~ /^--- Day \d+: .* ---$/
+        complaints << :puzztitle
+      end
+    else
       complaints << :nopuzzle
     end
 
@@ -31,8 +37,11 @@ def parse_contents(path, contents)
       complaints << :noscript
     end
 
-    # TODO: Check for matching "day" name in puzzle.txt
     # TODO: Somehow check for proper formatting of output of ab.whatever?
+    # TODO: Parse for
+    #   The first half of this puzzle is complete! It provides one gold star: *
+    #   and
+    #   Both parts of this puzzle are complete! They provide two gold stars: **
   end
 
   complaints
