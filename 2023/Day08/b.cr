@@ -1,3 +1,5 @@
+# Preserved for posterity
+
 if ARGV.size > 0
   fname = ARGV.first
 else

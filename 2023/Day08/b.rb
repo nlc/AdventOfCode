@@ -1,3 +1,5 @@
+# Preserved for posterity as the template for b.cr
+
 fname = ARGV.shift || 'input.txt'
 
 instructions, nodes_str = File.read(fname, chomp: true).split(/\n\n/)
