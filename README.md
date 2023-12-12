@@ -19,6 +19,8 @@
 <br/>
 <a href=./2023/Day09>Day 9: Mirage Maintenance**</a>
 <br/>
+<a href=./2023/Day10>Day 10: Pipe Maze*</a>
+<br/>
 <a href=./2023/Day11>Day 11: Cosmic Expansion**</a>
 <br/>
 <a href=./2023/Day12>Day 12: Hot Springs*</a>
