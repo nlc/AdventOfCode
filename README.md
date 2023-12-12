@@ -177,17 +177,17 @@
 <br/>
 <a href=./2019/Day12>Day 12: The N-Body Problem**</a>
 <br/>
-<a href=./2019/Day13>Day 13</a>
+<a href=./2019/Day13>Day 13: Care Package**</a>
 <br/>
-<a href=./2019/Day14>Day 14</a>
+<a href=./2019/Day14>Day 14: Space Stoichiometry</a>
 <br/>
-<a href=./2019/Day15>Day 15</a>
+<a href=./2019/Day15>Day 15: Oxygen System**</a>
 <br/>
-<a href=./2019/Day16>Day 16</a>
+<a href=./2019/Day16>Day 16: Flawed Frequency Transmission*</a>
 <br/>
-<a href=./2019/Day17>Day 17</a>
+<a href=./2019/Day17>Day 17: Set and Forget*</a>
 <br/>
-<a href=./2019/Day19>Day 19</a>
+<a href=./2019/Day19>Day 19: Tractor Beam*</a>
 <br/>
 </details>
 <details>
