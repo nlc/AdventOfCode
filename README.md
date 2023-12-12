@@ -9,7 +9,7 @@
 <br/>
 <a href=./2023/Day04>Day 4: Scratchcards</a>
 <br/>
-<a href=./2023/Day05>Day 5</a>
+<a href=./2023/Day05>Day 5: If You Give A Seed A Fertilizer</a>
 <br/>
 <a href=./2023/Day06>Day 6: Wait For It</a>
 <br/>
@@ -21,7 +21,7 @@
 <br/>
 <a href=./2023/Day11>Day 11: Cosmic Expansion</a>
 <br/>
-<a href=./2023/Day12>Day 12</a>
+<a href=./2023/Day12>Day 12: Hot Springs</a>
 <br/>
 </details>
 <details>
