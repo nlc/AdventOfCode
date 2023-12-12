@@ -21,6 +21,8 @@
 <br/>
 <a href=./2023/Day11>Day 11: Cosmic Expansion</a>
 <br/>
+<a href=./2023/Day12>Day 12</a>
+<br/>
 </details>
 <details>
 <summary><h3><a href=./2022>2022</a></h3></summary>
