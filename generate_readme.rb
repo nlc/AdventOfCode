@@ -26,10 +26,10 @@ YEARS.reverse.each do |year|
       if (day_title_matches = puzzle_txt_lines&.first.match(/^--- (Day \d+: .*) ---$/))
         day_title = day_title_matches[1]
 
-        if puzzle_txt_lines.include?(PUZZLE_ONE_STAR)
-          puzzle_stars = 1
-        elsif puzzle_txt_lines.include?(PUZZLE_TWO_STARS)
+        if puzzle_txt_lines.include?(PUZZLE_TWO_STARS)
           puzzle_stars = 2
+        elsif puzzle_txt_lines.include?(PUZZLE_ONE_STAR)
+          puzzle_stars = 1
         end
 
         day_title += '*' * puzzle_stars

@@ -128,7 +128,7 @@
 <br/>
 <a href=./2020/Day12>Day 12: Rain Risk**</a>
 <br/>
-<a href=./2020/Day13>Day 13: Shuttle Search*</a>
+<a href=./2020/Day13>Day 13: Shuttle Search**</a>
 <br/>
 <a href=./2020/Day14>Day 14: Docking Data**</a>
 <br/>
@@ -146,7 +146,7 @@
 <br/>
 <a href=./2020/Day21>Day 21: Allergen Assessment**</a>
 <br/>
-<a href=./2020/Day22>Day 22: Crab Combat*</a>
+<a href=./2020/Day22>Day 22: Crab Combat**</a>
 <br/>
 <a href=./2020/Day23>Day 23: Crab Cups*</a>
 <br/>
