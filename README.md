@@ -25,6 +25,8 @@
 <br/>
 <a href=./2023/Day12>Day 12: Hot Springs*</a>
 <br/>
+<a href=./2023/Day13>Day 13: Point of Incidence*</a>
+<br/>
 </details>
 <details>
 <summary><h3><a href=./2022>2022</a></h3></summary>
