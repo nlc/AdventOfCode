@@ -55,17 +55,17 @@ def smudge(rect)
   raise 'bad assumption!'
 end
 
-patterns = File.read(fname, chomp: true).split("\n\n").map do |pattern_str|
-  pattern_str.split("\n").map(&:chars)
-end
-
-summary =
-  patterns.map.with_index do |pattern, i|
-    p i
-    smudge(pattern)
-  end.sum
-
-p summary
+# patterns = File.read(fname, chomp: true).split("\n\n").map do |pattern_str|
+#   pattern_str.split("\n").map(&:chars)
+# end
+# 
+# summary =
+#   patterns.map.with_index do |pattern, i|
+#     p i
+#     smudge(pattern)
+#   end.sum
+# 
+# p summary
 
 # summary =
 #   patterns.sum do |pattern|
