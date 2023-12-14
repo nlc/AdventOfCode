@@ -97,7 +97,7 @@
 <br/>
 <a href=./2021/Day08>Day 8: Seven Segment Search**</a>
 <br/>
-<a href=./2021/Day09>Day 9: Smoke Basin*</a>
+<a href=./2021/Day09>Day 9: Smoke Basin**</a>
 <br/>
 <a href=./2021/Day10>Day 10: Syntax Scoring**</a>
 <br/>
