@@ -8,6 +8,14 @@ def ireadlines(fname)
   readlines(fname).map(&:to_i)
 end
 
+def readgrid(fname)
+  readlines.map(&:chars)
+end
+
+def ireadgrid(fname)
+  readlines.map { |line| line.chars.map(&:to_i) }
+end
+
 def readchars(fname)
   File.read(fname)
 end
