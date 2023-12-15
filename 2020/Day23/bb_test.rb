@@ -1,3 +1,6 @@
+# This probably can't be searched for recurrence--
+# no recurrence occurs even when n is as small as 1000
+
 require 'date'
 require 'set'
 
@@ -41,7 +44,7 @@ end
 input = ARGV.shift || raise('Usage: ruby a.rb <input configuration>')
 
 cups = input.chars.map(&:to_i)
-cups += ((cups.max + 1)..(100 + cups.max + 1 - cups.length)).to_a
+cups += ((cups.max + 1)..(1000 + cups.max + 1 - cups.length)).to_a
 
 seen = Set.new([cups.hash])
 
