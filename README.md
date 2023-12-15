@@ -105,8 +105,6 @@
 <br/>
 <a href=./2021/Day11>Day 11: Dumbo Octopus</a>
 <br/>
-<a href=./2021/Day23>Day 23</a>
-<br/>
 </details>
 <details>
 <summary><h3><a href=./2020>2020</a></h3></summary>
