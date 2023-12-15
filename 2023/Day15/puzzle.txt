@@ -1,4 +1,3 @@
-
 --- Day 15: Lens Library ---
 
 The newly-focused parabolic reflector dish is sending all of the collected

@@ -29,6 +29,8 @@
 <br/>
 <a href=./2023/Day14>Day 14: Parabolic Reflector Dish**</a>
 <br/>
+<a href=./2023/Day15>Day 15: Lens Library**</a>
+<br/>
 </details>
 <details>
 <summary><h3><a href=./2022>2022</a></h3></summary>
@@ -102,6 +104,8 @@
 <a href=./2021/Day10>Day 10: Syntax Scoring**</a>
 <br/>
 <a href=./2021/Day11>Day 11: Dumbo Octopus</a>
+<br/>
+<a href=./2021/Day23>Day 23</a>
 <br/>
 </details>
 <details>
@@ -218,7 +222,7 @@
 <br/>
 <a href=./2018/Day10>Day 10: The Stars Align**</a>
 <br/>
-<a href=./2018/Day11>Day 11</a>
+<a href=./2018/Day11>Day 11: Chronal Charge*</a>
 <br/>
 <a href=./2018/Day12>Day 12: Subterranean Sustainability**</a>
 <br/>
