@@ -31,6 +31,10 @@
 <br/>
 <a href=./2023/Day15>Day 15: Lens Library**</a>
 <br/>
+<a href=./2023/Day16>Day 16: The Floor Will Be Lava**</a>
+<br/>
+<a href=./2023/Day17>Day 17: Clumsy Crucible</a>
+<br/>
 </details>
 <details>
 <summary><h3><a href=./2022>2022</a></h3></summary>
