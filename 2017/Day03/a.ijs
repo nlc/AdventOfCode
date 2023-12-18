@@ -9,8 +9,9 @@ nw =: 1 0 4&p.
 sw =: 3 _6 4&p.
 
 NB. Sequence
-([: (|.@}.}:@,]) ] + i.@(1&+)) each <"(0) i. 4
+NB. ([: (|.@}.}:@,]) ] + i.@(1&+)) each <"(0) i. 4
 
 quadruple =: (4&*)@# $ ]
+([: quadruple [: (1|.])@(|.@}.}:@,]) ] + i.@(1&+)) each <"(0) ring input
 
 input =: ". fread 'input.txt'

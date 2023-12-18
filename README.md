@@ -35,6 +35,8 @@
 <br/>
 <a href=./2023/Day17>Day 17: Clumsy Crucible</a>
 <br/>
+<a href=./2023/Day18>Day 18: Lavaduct Lagoon*</a>
+<br/>
 </details>
 <details>
 <summary><h3><a href=./2022>2022</a></h3></summary>
@@ -228,7 +230,7 @@
 <br/>
 <a href=./2018/Day12>Day 12: Subterranean Sustainability**</a>
 <br/>
-<a href=./2018/Day13>Day 13</a>
+<a href=./2018/Day13>Day 13: Mine Cart Madness</a>
 <br/>
 </details>
 <details>
@@ -237,7 +239,7 @@
 <br/>
 <a href=./2017/Day02>Day 2: Corruption Checksum**</a>
 <br/>
-<a href=./2017/Day03>Day 3</a>
+<a href=./2017/Day03>Day 3: Spiral Memory</a>
 <br/>
 </details>
 <details>
