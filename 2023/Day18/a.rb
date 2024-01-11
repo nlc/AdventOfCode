@@ -17,7 +17,7 @@ def walk(position, direction, distance, trenched)
     trenched[position] = true
   end
 
-  position
+  p position
 end
 
 def get_neighbors(point)
