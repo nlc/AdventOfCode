@@ -1,5 +1,10 @@
 # [Advent of Code](https://adventofcode.com/)
 <details open>
+<summary><h3><a href=./2024>2024</a></h3></summary>
+<a href=./2024/Day01>Day 1: Historian Hysteria**</a>
+<br/>
+</details>
+<details>
 <summary><h3><a href=./2023>2023</a></h3></summary>
 <a href=./2023/Day01>Day 1: Trebuchet?!**</a>
 <br/>
@@ -36,6 +41,10 @@
 <a href=./2023/Day17>Day 17: Clumsy Crucible</a>
 <br/>
 <a href=./2023/Day18>Day 18: Lavaduct Lagoon*</a>
+<br/>
+<a href=./2023/Day19>Day 19</a>
+<br/>
+<a href=./2023/Day21>Day 21</a>
 <br/>
 </details>
 <details>
