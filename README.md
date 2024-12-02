@@ -3,6 +3,8 @@
 <summary><h3><a href=./2024>2024</a></h3></summary>
 <a href=./2024/Day01>Day 1: Historian Hysteria**</a>
 <br/>
+<a href=./2024/Day02>Day 2: Red-Nosed Reports**</a>
+<br/>
 </details>
 <details>
 <summary><h3><a href=./2023>2023</a></h3></summary>

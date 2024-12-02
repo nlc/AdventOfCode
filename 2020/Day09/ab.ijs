@@ -41,4 +41,4 @@ echo (<./ + >./) (contigstart ,: contiglength) ];.0 data
 bold 0
 NB. echo (contigstart ,: contiglength) ];.0 data
 
-exit 1
+NB. exit 1
