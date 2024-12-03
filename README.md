@@ -5,6 +5,8 @@
 <br/>
 <a href=./2024/Day02>Day 2: Red-Nosed Reports**</a>
 <br/>
+<a href=./2024/Day03>Day 3: Mull It Over**</a>
+<br/>
 </details>
 <details>
 <summary><h3><a href=./2023>2023</a></h3></summary>
