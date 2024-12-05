@@ -9,6 +9,8 @@
 <br/>
 <a href=./2024/Day04>Day 4: Ceres Search**</a>
 <br/>
+<a href=./2024/Day05>Day 5: Print Queue**</a>
+<br/>
 </details>
 <details>
 <summary><h3><a href=./2023>2023</a></h3></summary>
