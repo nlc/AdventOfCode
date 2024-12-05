@@ -7,6 +7,8 @@
 <br/>
 <a href=./2024/Day03>Day 3: Mull It Over**</a>
 <br/>
+<a href=./2024/Day04>Day 4</a>
+<br/>
 </details>
 <details>
 <summary><h3><a href=./2023>2023</a></h3></summary>
