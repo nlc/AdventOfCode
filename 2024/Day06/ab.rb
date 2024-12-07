@@ -55,11 +55,11 @@ class Walker < WalkerBase
   end
 
   def guard_routine
-    while in_grid? && (@visited[[x, y]].nil? || @visited[[x, y]] < 4)
+    while in_grid? && (@visited[[x, y]].nil? || @visited[[x, y]] < 3)
       step_until_blocked
     end
 
-    return (!@visited[[x, y]].nil?) && @visited[[x, y]] >= 4 # whether it's a loop
+    return (!@visited[[x, y]].nil?) && @visited[[x, y]] >= 3 # whether it's a loop
   end
 end
 
