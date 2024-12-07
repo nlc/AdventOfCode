@@ -88,3 +88,33 @@ class WalkerBase
     @d = orig_direction
   end
 end
+
+def parallel_map(array, &block)
+  threads = []
+    results = Array.new(array.size)
+
+  array.each_with_index do |element, index|
+    threads << Thread.new do
+      results[index] = block.call(element)
+    end
+  end
+
+  threads.each(&:join)
+
+  results
+end
+
+def parallel_map_with_index(array, &block)
+  threads = []
+    results = Array.new(array.size)
+
+  array.each_with_index do |element, index|
+    threads << Thread.new do
+      results[index] = block.call(element, index)
+    end
+  end
+
+  threads.each(&:join)
+
+  results
+end

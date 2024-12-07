@@ -42,21 +42,22 @@ class Walker < WalkerBase
     @visited[[x, y]] += 1
   end
 
-  def step_until_blocked
-    while in_grid? && grid[y][x] != '#' && @visited[[x, y]] != d
+  def step_until_blocked(extra: nil)
+    while in_grid? && (grid[y][x] != '#' && [x, y] != extra) && @visited[[x, y]] != d
       visit_current
       walk
     end
 
-    if in_grid? && grid[y][x] == '#'
+
+    if in_grid? && (grid[y][x] == '#' || [x, y] == extra)
       step(:B)
       turn(:R)
     end
   end
 
-  def guard_routine
+  def guard_routine(extra: nil)
     while in_grid? && (@visited[[x, y]].nil? || @visited[[x, y]] < 3)
-      step_until_blocked
+      step_until_blocked(extra: extra)
     end
 
     return (!@visited[[x, y]].nil?) && @visited[[x, y]] >= 3 # whether it's a loop
@@ -74,24 +75,28 @@ def day06b(grid)
   sum = 0
 
   grid.each_with_index do |line, j|
-    line.chars.each_with_index do |char, i|
-      if char == '.'
-        grid[j][i] = '#'
+    sum +=
+      parallel_map_with_index(line.chars) do |char, i|
+        if char == '.'
+          walker = Walker.new(grid)
 
-        walker = Walker.new(grid)
-        if walker.guard_routine
-          sum += 1
+          if walker.guard_routine(extra: [i, j])
+            1
+          else
+            0
+          end
+        else
+          0
         end
-
-        grid[j][i] = '.'
-      end
-    end
+      end.sum
   end
 
   sum
 end
 
-grid = File.readlines('input.txt')
+INPUT_FNAME = ARGV.shift || 'input.txt'
+
+grid = File.readlines(INPUT_FNAME)
 
 puts "Day 06:"
 puts "  Part A: #{day06a(grid)}"
