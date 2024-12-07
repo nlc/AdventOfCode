@@ -13,6 +13,8 @@
 <br/>
 <a href=./2024/Day06>Day 6: Guard Gallivant**</a>
 <br/>
+<a href=./2024/Day07>Day 7: Bridge Repair**</a>
+<br/>
 </details>
 <details>
 <summary><h3><a href=./2023>2023</a></h3></summary>
