@@ -56,9 +56,7 @@
 <br/>
 <a href=./2023/Day18>Day 18: Lavaduct Lagoon*</a>
 <br/>
-<a href=./2023/Day19>Day 19</a>
-<br/>
-<a href=./2023/Day21>Day 21</a>
+<a href=./2023/Day19>Day 19: Aplenty</a>
 <br/>
 </details>
 <details>
