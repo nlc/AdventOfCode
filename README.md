@@ -15,6 +15,8 @@
 <br/>
 <a href=./2024/Day07>Day 7: Bridge Repair**</a>
 <br/>
+<a href=./2024/Day08>Day 8: Resonant Collinearity**</a>
+<br/>
 </details>
 <details>
 <summary><h3><a href=./2023>2023</a></h3></summary>
