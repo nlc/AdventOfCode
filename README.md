@@ -304,6 +304,6 @@
 <br/>
 <a href=./2015/Day12>Day 12: JSAbacusFramework.io*</a>
 <br/>
-<a href=./2015/Day13>Day 13: Knights of the Dinner Table</a>
+<a href=./2015/Day13>Day 13: Knights of the Dinner Table**</a>
 <br/>
 </details>
