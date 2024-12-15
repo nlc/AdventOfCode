@@ -28,7 +28,9 @@ NB. blink =: ([: > [: ,"1 each/ [: rule each ;/)
 
 NB. 2 (1:`(<:@[ $: 2024&*@])`(<:@[ $: 1:)`((<:@[ $: ???) + (<:@[ $: ???)) @. selectrule) 0
 
-fh =: (<.@% 10 ^ 2 %~ [: >. 10&^.) NB. Shame about the duplication
-sh =: (|~ 10 ^ 2 %~ [: >. 10&^.)
+NB. fh =: (<.@% 10 ^ 2 %~ [: >. 10&^.) NB. Shame about the duplication
+NB. sh =: (|~ 10 ^ 2 %~ [: >. 10&^.)
+fh =: ({.~-:@#)&.:digits
+sh =: (}.~-:@#)&.:digits
 
 NB. 1:`(<:@[ $: 2024&*@])`(<:@[ $: 1:)`((<:@[ $: fh@]) + (<:@[ $: sh@])) @. selectrule
