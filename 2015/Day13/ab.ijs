@@ -1,4 +1,4 @@
-ns =: > ([: ". '_?\d+' rxfirst ('lose ';'_') rxrplc ]) each cutLF fread 'sample.txt'
+ns =: > ([: ". '_?\d+' rxfirst ('lose ';'_') rxrplc ]) each cutLF fread 'input.txt'
 
 'p q' =: ([: |@(1&pick)@p. [:,&1 1 -@#) ns
 t1 =: (+|:) (p, p) $ , _.&,"1 (q , p) $ ns

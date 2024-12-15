@@ -8,13 +8,15 @@ def rule(cups)
   #   select | pickups | destination | rest
   # MUST ensure that select is first
 
+  len = cups.length
+
   selected_value = cups[0]
   pickups = cups[1..3]
-  rest = cups[4...9]
+  rest = cups[4...len]
 
-  destination_value = selected_value == 1 ? 9 : selected_value - 1
+  destination_value = selected_value == 1 ? len : selected_value - 1
   while pickups.include?(destination_value)
-    destination_value = destination_value == 1 ? 9 : destination_value - 1
+    destination_value = destination_value == 1 ? len : destination_value - 1
   end
   destination_index = rest.index(destination_value)
 
@@ -31,14 +33,34 @@ def after_1(arr)
   lrotate(arr, arr.index(1))[1..-1].join
 end
 
-input = ARGV.shift || raise('Usage: ruby a.rb <input configuration>')
+require 'set'
 
-cups = input.chars.map(&:to_i)
 
-1000000.times do |i|
-  puts i if i % 10000 == 0
+def perform(n)
+  input = '219748365'
+  cups = input.chars.map(&:to_i) + ((input.length + 1)..n).to_a
 
-  cups = rule(cups)
+  puts "cups = #{cups.inspect}"
+
+  seen_configs = Set.new
+
+  i = 0
+  loop do
+    cups = rule(cups)
+
+    if seen_configs.include?(cups)
+      puts "RECURRENCE AT #{i}"
+      break
+    end
+
+    seen_configs.add(cups)
+
+    i += 1
+  end
+
+  p cups
 end
 
-puts after_1(cups)
+(9..20).each do |n|
+  perform n
+end

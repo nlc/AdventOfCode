@@ -17,6 +17,12 @@
 <br/>
 <a href=./2024/Day08>Day 8: Resonant Collinearity**</a>
 <br/>
+<a href=./2024/Day09>Day 9</a>
+<br/>
+<a href=./2024/Day10>Day 10</a>
+<br/>
+<a href=./2024/Day11>Day 11: Plutonian Pebbles**</a>
+<br/>
 </details>
 <details>
 <summary><h3><a href=./2023>2023</a></h3></summary>
