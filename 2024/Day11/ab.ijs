@@ -22,9 +22,13 @@ ruleindex =: (1 2 +/ . * zero,evendigits)"0
 
 NB. ((mult`one`halve) @. ruleindex) each ;/ input
 
-rule =: ((mult`one`halve) @. ruleindex) M.
+selectrule =: *@[ * 1 + 1 2 (+/ . *) zero@] , evendigits@]
 
-blink =: ([: > [: ,"1 each/ [: rule each ;/)
+NB. blink =: ([: > [: ,"1 each/ [: rule each ;/)
 
-NB. fib =: (0:`1:`($:@-&1 + $:@-&2)@.(>&0 + >&1))"0 M.
-NB. 2 (1:`(<:@[ $: 2024&*@])`(<:@[ $: 1:)`((<:@[ $: fh@]) + (<:@[ $: sh@])) @. selectrule) 240
+NB. 2 (1:`(<:@[ $: 2024&*@])`(<:@[ $: 1:)`((<:@[ $: ???) + (<:@[ $: ???)) @. selectrule) 0
+
+fh =: (<.@% 10 ^ 2 %~ [: >. 10&^.) NB. Shame about the duplication
+sh =: (|~ 10 ^ 2 %~ [: >. 10&^.)
+
+NB. 1:`(<:@[ $: 2024&*@])`(<:@[ $: 1:)`((<:@[ $: fh@]) + (<:@[ $: sh@])) @. selectrule
