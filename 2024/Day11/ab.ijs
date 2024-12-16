@@ -11,7 +11,7 @@ evendigits =: [:-.2|#@digits
 selectrule =: *@[ * 1 + 1 2 (+/ . *) zero@] , evendigits@]
 
 fh =: ({.~-:@#)&.:digits NB. First Half
-sh =: (}.~-:@#)&.:digits NB. First Half
+sh =: (}.~-:@#)&.:digits NB. Second Half
 
 NB. Can probably be refactored to remove the many <:@[ s
 blink =: (1:`(<:@[ $: 2024&*@])`(<:@[ $: 1:)`((<:@[ $: fh@]) + (<:@[ $: sh@])) @. selectrule) M.
