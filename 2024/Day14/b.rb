@@ -32,12 +32,46 @@ def gen_grid(robots)
   grid
 end
 
+# Measure how "neighbory" a grid is; rough measure of how likely it is to contain a picture
+def grid_x_neighborness(grid)
+  height = grid.length
+  width = grid.first.length
+  height.times.sum do |y|
+    (width - 1).times.sum do |x|
+      grid[y][x] * grid[y][x + 1]
+    end
+  end
+end
+
 robots = File.readlines('input.txt').map { |line| line.scan(/-?\d+/).map(&:to_i) }
 
-(101 * 103).times do |t|
-  puts t if t % 100 == 0
+sum_neighborness = 0
+max_neighborness = 0
+max_neighborness_grids = {}
 
-  draw_grid(gen_grid(robots), 'frame_%05d.pbm' % t)
+num_frames = 101 * 103
+
+num_frames.times do |t|
+  # puts t if t % 100 == 0
+  # draw_grid(gen_grid(robots), 'frame_%05d.pbm' % t)
+
+  grid = gen_grid(robots)
+  neighborness = grid_x_neighborness(grid)
+  sum_neighborness += neighborness
+  if neighborness > max_neighborness
+    max_neighborness_grids[t] = [grid, neighborness]
+    max_neighborness = neighborness
+  end
 
   robots = advance_robots(robots)
+end
+
+avg_neighborness = sum_neighborness / num_frames
+
+puts 'Candidate Frames:'
+max_neighborness_grids.each do |t, (grid, neighborness)| # very unscientific
+  if neighborness > avg_neighborness
+    printf("  %05d: n=%d\n", t, neighborness)
+    draw_grid(grid, 'candidate_%05d.pbm' % t)
+  end
 end
