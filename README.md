@@ -25,6 +25,8 @@
 <br/>
 <a href=./2024/Day13>Day 13: Claw Contraption**</a>
 <br/>
+<a href=./2024/Day14>Day 14: Restroom Redoubt**</a>
+<br/>
 </details>
 <details>
 <summary><h3><a href=./2023>2023</a></h3></summary>
