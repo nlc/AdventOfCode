@@ -17,11 +17,13 @@
 <br/>
 <a href=./2024/Day08>Day 8: Resonant Collinearity**</a>
 <br/>
-<a href=./2024/Day09>Day 9</a>
+<a href=./2024/Day09>Day 9: Disk Fragmenter</a>
 <br/>
 <a href=./2024/Day10>Day 10: Hoof It**</a>
 <br/>
 <a href=./2024/Day11>Day 11: Plutonian Pebbles**</a>
+<br/>
+<a href=./2024/Day13>Day 13: Claw Contraption**</a>
 <br/>
 </details>
 <details>
