@@ -1,4 +1,5 @@
 require 'pp'
+inp = 'input.txt'
 
 def readlines(fname)
   File.readlines(fname, chomp: true)
@@ -32,7 +33,31 @@ def ireadwords(fname)
   readwords(fname).map(&:to_i)
 end
 
-inp = 'input.txt'
+# BEGIN:Basic array vector math
+def vsubtract(a1, a2)
+  a1.zip(a2).map { |e1, e2| e1 - e2 }
+end
+
+def vadd(a1, a2)
+  a1.zip(a2).map { |e1, e2| e1 + e2 }
+end
+
+def vnegative(a)
+  a.map(&:-@)
+end
+
+def vinbounds?(a, bounds)
+  a.zip(bounds).all? do |e, dim|
+    dimmin, dimmax = dim
+
+    e >= dimmin && e < dimmax
+  end
+end
+
+def vdot(a1, a2)
+  a1.zip(a2).sum { |e1, e2| e1 * e2 }
+end
+# END:Basic array vector math
 
 class WalkerBase
   TURN_TRANSITIONS = {
@@ -63,7 +88,11 @@ class WalkerBase
   end
 
   def turn(side)
-    @d = TURN_TRANSITIONS[@d][side]
+    if TURN_TRANSITIONS[@d].key?(side)
+      @d = TURN_TRANSITIONS[@d][side]
+    elsif [:E, :N, :W, :S].include?(side) # Allow to e.g. "turn north" regardless of direction
+      @d = side
+    end
   end
 
   def walk(distance) # Walk forward

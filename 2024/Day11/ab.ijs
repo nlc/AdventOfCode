@@ -5,7 +5,6 @@ input =: ". }: fread 'input.txt'
 digits =: 10&#.^:_1
 
 zero =: 0&=
-NB. evendigits =: [:-.2|[:<.10^.]
 evendigits =: [:-.2|#@digits
 
 selectrule =: *@[ * 1 + 1 2 (+/ . *) zero@] , evendigits@]

@@ -19,7 +19,7 @@
 <br/>
 <a href=./2024/Day09>Day 9</a>
 <br/>
-<a href=./2024/Day10>Day 10</a>
+<a href=./2024/Day10>Day 10: Hoof It**</a>
 <br/>
 <a href=./2024/Day11>Day 11: Plutonian Pebbles**</a>
 <br/>
