@@ -27,6 +27,10 @@
 <br/>
 <a href=./2024/Day14>Day 14: Restroom Redoubt**</a>
 <br/>
+<a href=./2024/Day15>Day 15: Warehouse Woes*</a>
+<br/>
+<a href=./2024/Day16>Day 16: Reindeer Maze</a>
+<br/>
 </details>
 <details>
 <summary><h3><a href=./2023>2023</a></h3></summary>
