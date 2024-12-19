@@ -26,7 +26,10 @@ def turn_right(dir)
   [[0, -1],[1, 0]].map { |row| vdot(row, dir) }
 end
 
-GRID = File.readlines('sample.txt', chomp: true).map(&:chars)
+ifname = 'test.txt'
+# ifname = ARGV.shift || 'input.txt'
+
+GRID = File.readlines(ifname, chomp: true).map(&:chars)
 
 start_loc = nil
 end_loc = nil
@@ -42,7 +45,7 @@ GRID.each_with_index do |line, y|
 end
 
 def lowest_maze_score(loc, dir, visited = {})
-  puts "called @#{loc.inspect}"
+  # puts "called @#{loc.inspect}"
 
   return 0 if grid_at(loc) == 'E'
   return Float::INFINITY if grid_at(loc) == '#'
@@ -63,5 +66,32 @@ def lowest_maze_score(loc, dir, visited = {})
   ].min
 end
 
+def shortest_maze_path(loc, dir, visited = {})
+  # puts "called @#{loc.inspect}"
+
+  return [loc] if grid_at(loc) == 'E'
+  return (nil) if grid_at(loc) == '#'
+  return (nil) if visited[loc]
+
+  forward_loc = vadd(loc, dir)
+  left_dir = turn_left(dir)
+  left_loc = vadd(loc, left_dir)
+  right_dir = turn_right(dir)
+  right_loc = vadd(loc, right_dir)
+
+  new_visited = visited.merge(loc => true)
+
+  result =
+    [
+      shortest_maze_path(left_loc, left_dir, new_visited),
+      shortest_maze_path(forward_loc, dir, new_visited),
+      shortest_maze_path(right_loc, right_dir, new_visited)
+    ].compact.min_by { |e| e.length }
+
+  [loc, *result] unless result.nil?
+end
+
 print_grid
-p lowest_maze_score(start_loc, [1, 0])
+smp = shortest_maze_path(start_loc, [1, 0])
+p smp
+p smp.length
