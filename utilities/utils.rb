@@ -1,4 +1,5 @@
 require 'pp'
+
 inp = 'input.txt'
 
 def readlines(fname)
@@ -56,6 +57,10 @@ end
 
 def vdot(a1, a2)
   a1.zip(a2).sum { |e1, e2| e1 * e2 }
+end
+
+def vscale(v, s)
+  v.map { |e| e * s }
 end
 # END:Basic array vector math
 
