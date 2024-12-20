@@ -314,4 +314,6 @@
 <br/>
 <a href=./2015/Day13>Day 13: Knights of the Dinner Table**</a>
 <br/>
+<a href=./2015/Day14>Day 14: Reindeer Olympics*</a>
+<br/>
 </details>
