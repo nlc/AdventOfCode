@@ -31,6 +31,8 @@
 <br/>
 <a href=./2024/Day16>Day 16: Reindeer Maze</a>
 <br/>
+<a href=./2024/Day17>Day 17: Chronospatial Computer*</a>
+<br/>
 </details>
 <details>
 <summary><h3><a href=./2023>2023</a></h3></summary>
