@@ -44,7 +44,7 @@ def execute(iptr, registers, program)
   return [iptr, [a, b, c], output, true]
 end
 
-def day17a(registers, program)
+def run_program(registers, program)
   iptr = 0
   output = nil
   outputs = []
@@ -58,21 +58,34 @@ def day17a(registers, program)
   outputs.join(',')
 end
 
+def day17a(registers, program)
+  run_program(registers, program)
+end
+
 def day17b(registers, program)
-  iptr = 0
-  output = nil
-  outputs = []
-  running = true
-
   # considerations:
-  # no guarantee of avoiding infinite loops now, gotta check for that
+  # no guarantee of avoiding infinite loops now, most likely gotta check for that
 
-  while running
-    iptr, registers, output, running = execute(iptr, registers, program)
-    outputs << output unless output.nil?
+  # Nothing up to 25,000,000 so far
+  1000.times do |a|
+    iptr = 0
+    output = nil
+    outputs = []
+    running = true
+
+    registers = [a, 0, 0]
+
+    while running
+      iptr, registers, output, running = execute(iptr, registers, program)
+      outputs << output unless output.nil?
+    end
+
+    puts "=== #{a} === : #{outputs} | R #{registers.inspect}"
+
+    return a if program == outputs
   end
 
-  outputs.join(',')
+  return nil
 end
 
 
@@ -80,4 +93,4 @@ registers_str, program_str = File.read('input.txt').split(/\n\n/)
 registers = registers_str.split(/\n/).map { |line| line.split(/: */).last.to_i }
 program = program_str.split(/: */).last.split(/,/).map(&:to_i)
 
-puts day17b(registers, program)
+p day17b(registers, program)

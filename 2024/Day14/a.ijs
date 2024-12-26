@@ -8,7 +8,7 @@ day14a =: */(sort@~.histogram]) #.-:1+(#~[:0&~:*/"1) 2 (<: - >:) (100 102) %"1 (
 
 
 'ls vs' =: (2&{."1 ; 2&}."1)  input
-
+(i. 10) */ vs
 
 echo 'Day 14:'
 '  Part A: %d' printf day14a
