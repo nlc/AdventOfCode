@@ -33,6 +33,16 @@
 <br/>
 <a href=./2024/Day17>Day 17: Chronospatial Computer*</a>
 <br/>
+<a href=./2024/Day18>Day 18</a>
+<br/>
+<a href=./2024/Day19>Day 19: Linen Layout**</a>
+<br/>
+<a href=./2024/Day21>Day 21</a>
+<br/>
+<a href=./2024/Day22>Day 22: Monkey Market*</a>
+<br/>
+<a href=./2024/Day24>Day 24: Crossed Wires*</a>
+<br/>
 </details>
 <details>
 <summary><h3><a href=./2023>2023</a></h3></summary>
