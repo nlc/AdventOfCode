@@ -1,5 +1,3 @@
-require 'awesome_print'
-
 fname = ARGV.shift || raise('Usage: ruby a.rb <input file name>')
 
 $part_b = fname =~ /_b\.txt$/

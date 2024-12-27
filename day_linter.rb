@@ -10,8 +10,10 @@ COMPLAINT_MESSAGES = {
   empty: 'folder is empty',
   nopuzzle: 'lacks puzzle.txt',
   puzztitle: 'puzzle.txt lacks properly-formatted title',
+  puzzlong: 'has long lines in puzzle.txt',
   noinput: 'lacks input.txt',
-  noscript: 'lacks properly-named script'
+  noscript: 'lacks properly-named script',
+  onlyascript: 'has two stars but only a-named script'
 }
 
 PUZZLE_ONE_STAR  = 'The first half of this puzzle is complete! It provides one gold star: *'.freeze
@@ -26,6 +28,11 @@ def parse_contents(path, contents)
   else
     if contents.include?('puzzle.txt')
       puzzle_txt_lines = File.readlines("#{path}/puzzle.txt", chomp: true)
+
+      if puzzle_txt_lines.any? { |line| line.length > 80 }
+        complaints << :puzzlong
+      end
+
       if puzzle_txt_lines.first !~ /^--- Day \d+: .* ---$/
         complaints << :puzztitle
       else
@@ -47,6 +54,8 @@ def parse_contents(path, contents)
 
     if !contents.grep(/^ab?\./).any?
       complaints << :noscript
+    elsif stars_from_puzzle_txt == 2 && !contents.grep(/^a?b\./).any?
+      complaints << :onlyascript
     end
 
     # TODO: Somehow check for proper formatting of output of ab.whatever?

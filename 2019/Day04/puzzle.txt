@@ -29,9 +29,3 @@ How many different passwords within the range given in your puzzle input meet al
 Your puzzle answer was 1196.
 
 Both parts of this puzzle are complete! They provide two gold stars: **
-
-At this point, you should return to your Advent calendar and try another puzzle.
-
-Your puzzle input was 152085-670283.
-
-You can also [Share] this puzzle.
