@@ -43,6 +43,8 @@
 <br/>
 <a href=./2024/Day24>Day 24: Crossed Wires*</a>
 <br/>
+<a href=./2024/Day25>Day 25: Code Chronicle*</a>
+<br/>
 </details>
 <details>
 <summary><h3><a href=./2023>2023</a></h3></summary>
