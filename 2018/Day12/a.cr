@@ -20,7 +20,7 @@ end
 # pad to the left and right
 padding_size = (2 * iterations).to_i
 padding = Array.new(padding_size, '.')
-extra_padding_size = (neighborhood_size / 2)
+extra_padding_size = Int64.new(neighborhood_size / 2)
 extra_padding = Array.new(extra_padding_size, '.')
 
 initial_state = padding + initial_state + padding

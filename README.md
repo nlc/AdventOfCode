@@ -23,6 +23,8 @@
 <br/>
 <a href=./2024/Day11>Day 11: Plutonian Pebbles**</a>
 <br/>
+<a href=./2024/Day12>Day 12: Garden Groups*</a>
+<br/>
 <a href=./2024/Day13>Day 13: Claw Contraption**</a>
 <br/>
 <a href=./2024/Day14>Day 14: Restroom Redoubt**</a>
@@ -40,6 +42,8 @@
 <a href=./2024/Day21>Day 21</a>
 <br/>
 <a href=./2024/Day22>Day 22: Monkey Market*</a>
+<br/>
+<a href=./2024/Day23>Day 23: LAN Party**</a>
 <br/>
 <a href=./2024/Day24>Day 24: Crossed Wires*</a>
 <br/>

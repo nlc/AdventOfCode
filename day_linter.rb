@@ -11,6 +11,7 @@ COMPLAINT_MESSAGES = {
   nopuzzle: 'lacks puzzle.txt',
   puzztitle: 'puzzle.txt lacks properly-formatted title',
   puzzlong: 'has long lines in puzzle.txt',
+  puzzextra: 'has extra text after the "two gold stars"',
   noinput: 'lacks input.txt',
   noscript: 'lacks properly-named script',
   onlyascript: 'has two stars but only a-named script'
@@ -43,6 +44,10 @@ def parse_contents(path, contents)
         else
           stars_from_puzzle_txt = 0
         end
+      end
+
+      if stars_from_puzzle_txt == 2 && puzzle_txt_lines.last != PUZZLE_TWO_STARS
+        complaints << :puzzextra
       end
     else
       complaints << :nopuzzle
