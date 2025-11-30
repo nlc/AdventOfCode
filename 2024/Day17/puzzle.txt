@@ -107,8 +107,6 @@ given values, then run the program. Once it halts, what do you get if you use
 commas to join the values it output into a single string?
 
 Your puzzle answer was 5,0,3,5,7,6,1,5,4.
-
-The first half of this puzzle is complete! It provides one gold star: *
 --- Part Two ---
 
 Digging deeper in the device's manual, you discover the problem: this program
@@ -130,3 +128,7 @@ This program outputs a copy of itself if register A is instead initialized to
 
 What is the lowest positive initial value for register A that causes the
 program to output a copy of itself?
+
+Your puzzle answer was 164516454365621.
+
+Both parts of this puzzle are complete! They provide two gold stars: **
