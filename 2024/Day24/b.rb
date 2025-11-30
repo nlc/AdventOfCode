@@ -7,7 +7,7 @@ def disassemble_binary(num)
 end
 
 def set_initials(initials, x_value, y_value)
-  disassemble_binary(x_value)
+  x_initials = disassemble_binary(x_value)
   disassemble_binary(y_value)
 
   x_initials = initials.keys.select { |k| k =~ /^x/ }

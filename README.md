@@ -33,13 +33,13 @@
 <br/>
 <a href=./2024/Day16>Day 16: Reindeer Maze</a>
 <br/>
-<a href=./2024/Day17>Day 17: Chronospatial Computer*</a>
+<a href=./2024/Day17>Day 17: Chronospatial Computer**</a>
 <br/>
-<a href=./2024/Day18>Day 18</a>
+<a href=./2024/Day18>Day 18: RAM Run</a>
 <br/>
 <a href=./2024/Day19>Day 19: Linen Layout**</a>
 <br/>
-<a href=./2024/Day21>Day 21</a>
+<a href=./2024/Day21>Day 21: Keypad Conundrum</a>
 <br/>
 <a href=./2024/Day22>Day 22: Monkey Market*</a>
 <br/>
@@ -333,5 +333,7 @@
 <a href=./2015/Day13>Day 13: Knights of the Dinner Table**</a>
 <br/>
 <a href=./2015/Day14>Day 14: Reindeer Olympics*</a>
+<br/>
+<a href=./2015/Day15>Day 15: Science for Hungry People*</a>
 <br/>
 </details>
