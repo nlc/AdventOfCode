@@ -310,7 +310,7 @@
 <br/>
 <a href=./2016/Day03>Day 3: Squares With Three Sides**</a>
 <br/>
-<a href=./2016/Day04>Day 4</a>
+<a href=./2016/Day04>Day 4: Security Through Obscurity**</a>
 <br/>
 </details>
 <details>
