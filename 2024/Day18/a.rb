@@ -100,6 +100,6 @@ def distance_from_corner(loc, end_loc, visited = {})
 end
 
 print_grid
-exit
+# exit
 lms = lowest_maze_score(start_loc, end_loc)
 p "final = #{lms}"

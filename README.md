@@ -1,5 +1,10 @@
 # [Advent of Code](https://adventofcode.com/)
 <details open>
+<summary><h3><a href=./2025>2025</a></h3></summary>
+<a href=./2025/Day01>Day 1: Secret Entrance**</a>
+<br/>
+</details>
+<details>
 <summary><h3><a href=./2024>2024</a></h3></summary>
 <a href=./2024/Day01>Day 1: Historian Hysteria**</a>
 <br/>
@@ -162,7 +167,9 @@
 <br/>
 <a href=./2021/Day10>Day 10: Syntax Scoring**</a>
 <br/>
-<a href=./2021/Day11>Day 11: Dumbo Octopus</a>
+<a href=./2021/Day11>Day 11: Dumbo Octopus**</a>
+<br/>
+<a href=./2021/Day12>Day 12: Passage Pathing</a>
 <br/>
 </details>
 <details>
@@ -303,6 +310,8 @@
 <br/>
 <a href=./2016/Day03>Day 3: Squares With Three Sides**</a>
 <br/>
+<a href=./2016/Day04>Day 4</a>
+<br/>
 </details>
 <details>
 <summary><h3><a href=./2015>2015</a></h3></summary>
@@ -335,5 +344,7 @@
 <a href=./2015/Day14>Day 14: Reindeer Olympics*</a>
 <br/>
 <a href=./2015/Day15>Day 15: Science for Hungry People*</a>
+<br/>
+<a href=./2015/Day16>Day 16: Aunt Sue</a>
 <br/>
 </details>
