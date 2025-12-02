@@ -3,6 +3,8 @@
 <summary><h3><a href=./2025>2025</a></h3></summary>
 <a href=./2025/Day01>Day 1: Secret Entrance**</a>
 <br/>
+<a href=./2025/Day02>Day 2: Gift Shop**</a>
+<br/>
 </details>
 <details>
 <summary><h3><a href=./2024>2024</a></h3></summary>
@@ -311,6 +313,8 @@
 <a href=./2016/Day03>Day 3: Squares With Three Sides**</a>
 <br/>
 <a href=./2016/Day04>Day 4: Security Through Obscurity**</a>
+<br/>
+<a href=./2016/Day05>Day 5</a>
 <br/>
 </details>
 <details>
