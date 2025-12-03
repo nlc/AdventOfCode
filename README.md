@@ -314,7 +314,9 @@
 <br/>
 <a href=./2016/Day04>Day 4: Security Through Obscurity**</a>
 <br/>
-<a href=./2016/Day05>Day 5</a>
+<a href=./2016/Day05>Day 5: How About a Nice Game of Chess?*</a>
+<br/>
+<a href=./2016/Day06>Day 6: Signals and Noise**</a>
 <br/>
 </details>
 <details>

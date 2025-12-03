@@ -22,6 +22,7 @@ day05a =: 3 : 0
   5 {"1 y gen 8 {. res
 )
 
+NB. Frustratingly unintuitive to do without a lot of imperative programming.
 day05b =: 3 : 0
   res =. 0 $ 0
   idxs =. 0 $ 0
