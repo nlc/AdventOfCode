@@ -320,7 +320,7 @@
 <br/>
 <a href=./2016/Day06>Day 6: Signals and Noise**</a>
 <br/>
-<a href=./2016/Day07>Day 7</a>
+<a href=./2016/Day07>Day 7: Internet Protocol Version 7**</a>
 <br/>
 </details>
 <details>
