@@ -5,6 +5,8 @@
 <br/>
 <a href=./2025/Day02>Day 2: Gift Shop**</a>
 <br/>
+<a href=./2025/Day03>Day 3: Lobby**</a>
+<br/>
 </details>
 <details>
 <summary><h3><a href=./2024>2024</a></h3></summary>
@@ -317,6 +319,8 @@
 <a href=./2016/Day05>Day 5: How About a Nice Game of Chess?*</a>
 <br/>
 <a href=./2016/Day06>Day 6: Signals and Noise**</a>
+<br/>
+<a href=./2016/Day07>Day 7</a>
 <br/>
 </details>
 <details>
