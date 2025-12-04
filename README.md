@@ -7,6 +7,8 @@
 <br/>
 <a href=./2025/Day03>Day 3: Lobby**</a>
 <br/>
+<a href=./2025/Day04>Day 4: Printing Department**</a>
+<br/>
 </details>
 <details>
 <summary><h3><a href=./2024>2024</a></h3></summary>
@@ -321,6 +323,10 @@
 <a href=./2016/Day06>Day 6: Signals and Noise**</a>
 <br/>
 <a href=./2016/Day07>Day 7: Internet Protocol Version 7**</a>
+<br/>
+<a href=./2016/Day08>Day 8: Two-Factor Authentication</a>
+<br/>
+<a href=./2016/Day09>Day 9: Explosives in Cyberspace</a>
 <br/>
 </details>
 <details>

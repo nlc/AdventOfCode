@@ -2,7 +2,7 @@ require 'format/printf'
 
 md5 =: 15 (128!:6) ]
 
-input =: 'uqwqemis'
+input =: (LF ; '') rxrplc fread 'input.txt'
 
 gen =: ([: md5 '%s%d' sprintf ;)"1 0
 atest =: ('00000' -: 5 {. gen)"1 0
@@ -15,7 +15,7 @@ day05a =: 3 : 0
   i =. 0
 
   while. (# res) < 8 do.
-    res =. res , (#~ y atest ]) (i * 100000) + i. 100000
+    echo res =. res , (#~ y atest ]) (i * 100000) + i. 100000
     i =. i + 1
   end.
 
