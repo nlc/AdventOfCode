@@ -11,4 +11,4 @@ echo 'Day 04:'
 '  Part A: %d' printf day04a input
 '  Part B: %d' printf day04b input
 
-exit 1
+NB. exit 1
