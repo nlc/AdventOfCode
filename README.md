@@ -11,6 +11,8 @@
 <br/>
 <a href=./2025/Day05>Day 5: Cafeteria**</a>
 <br/>
+<a href=./2025/Day06>Day 6: Trash Compactor**</a>
+<br/>
 </details>
 <details>
 <summary><h3><a href=./2024>2024</a></h3></summary>
