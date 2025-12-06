@@ -9,6 +9,8 @@
 <br/>
 <a href=./2025/Day04>Day 4: Printing Department**</a>
 <br/>
+<a href=./2025/Day05>Day 5: Cafeteria**</a>
+<br/>
 </details>
 <details>
 <summary><h3><a href=./2024>2024</a></h3></summary>
