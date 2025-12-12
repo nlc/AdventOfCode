@@ -72,8 +72,7 @@ total =
       of.puts gen_smt_problem(problem, '_p%03d_' % ip)
     end
 
-    # parse_z3_output(%x(z3 #{fname}))
-    0
+    parse_z3_output(%x(z3 #{fname}))
   end.sum
 
 puts total

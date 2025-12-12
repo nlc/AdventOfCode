@@ -1,7 +1,9 @@
+# TODO: Looks like the buttons need to be Arrays.
+
 require 'z3'
 
-infile = 'input.txt'
-# infile = 'sample.txt'
+# infile = 'input.txt'
+infile = 'sample.txt'
 
 input =
   File.readlines(infile, chomp: true).map do |line|
@@ -21,34 +23,40 @@ input =
 
 def gen_smt_problem(problem, nametag = '')
   lights, buttons, costs = problem
-  bitcount = lights.length
-  result_number = lights.map.with_index { |n, i| n * 2 ** i }.sum
+  bitcount = 32
 
   solver = Z3::Solver.new
   optimizer = Z3::Optimize.new
 
-  button_bitvecs =
+  button_values =
     buttons.map.with_index do |button, ib|
       button_name = "btn#{nametag}#{ib}"
-      button_bitvec = Z3.Bitvec(button_name, bitcount)
-      # solver.assert(button_bitvec.unsigned_lt(2))
-      optimizer.assert(button_bitvec == button)
+      button_value = Z3.Int(button_name)
+      optimizer.assert(button_value == button)
 
-      button_bitvec
+      button_value
     end
 
-  # make #presses a bitvec too, just in case...
-  button_press_bitvecs =
+  button_presses =
     buttons.map.with_index do |button, ib|
       button_name = "prs#{nametag}#{ib}"
-      button_press_bitvec = Z3.Bitvec(button_name, bitcount)
-      optimizer.assert(button_press_bitvec.unsigned_lt(2))
+      button_press = Z3.Int(button_name)
+      optimizer.assert(button_press.unsigned_lt(2))
 
-      button_press_bitvec
+      button_press
     end
 
-  total_presses = Z3.Bitvec("total#{nametag}", bitcount)
-  optimizer.assert(total_presses == Z3.Add(*button_press_bitvecs))
+  cost_bitvecs =
+    costs.map.with_index do |costs, ic|
+      cost_name = "prs#{nametag}#{ic}"
+      cost_bitvec = Z3.Int(cost_name)
+      optimizer.assert(button_pressed_lt(2))
+
+      button_press
+    end
+
+  total_presses = Z3.Int("total#{nametag}", bitcount)
+  optimizer.assert(total_presses == Z3.Add(*button_presses))
 
   result_name = "res#{nametag}"
   result_bitvec = Z3.Bitvec(result_name, bitcount)
@@ -57,19 +65,14 @@ def gen_smt_problem(problem, nametag = '')
 
   optimizer.minimize(total_presses)
 
-  optimizer.assert(result_bitvec == Z3.Xor(*button_press_bitvecs.zip(button_bitvecs).map { |button_press_bitvec, button_bitvec| button_press_bitvec * button_bitvec }))
+  optimizer.assert(result_bitvec == Z3.Xor(*button_presses.zip(button_values).map { |button_press, button_value| button_press * button_value }))
 
   if optimizer.satisfiable?
-    # optimizer.model.each do |n,v|
-    #   puts "* #{n} = #{v}"
-    # end
     optimizer.model[total_presses].to_s.to_i
   else
     raise 'unsatisfiable'
   end
 end
-
-# gen_smt_problem(input.first, '_test_')
 
 total =
   input.map.with_index do |problem, ip|

@@ -20,6 +20,10 @@ points.length.times do |ip1|
   end
 end
 
+File.open("first_#{num_mins}_connections.csv", 'w') do |f|
+  
+end
+
 ips_in_group = {}
 group_id_for_ip = {}
 latest_group_id = 0

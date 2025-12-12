@@ -13,6 +13,16 @@
 <br/>
 <a href=./2025/Day06>Day 6: Trash Compactor**</a>
 <br/>
+<a href=./2025/Day07>Day 7: Laboratories*</a>
+<br/>
+<a href=./2025/Day08>Day 8: Playground**</a>
+<br/>
+<a href=./2025/Day09>Day 9: Movie Theater*</a>
+<br/>
+<a href=./2025/Day10>Day 10: Factory*</a>
+<br/>
+<a href=./2025/Day11>Day 11: Reactor**</a>
+<br/>
 </details>
 <details>
 <summary><h3><a href=./2024>2024</a></h3></summary>
