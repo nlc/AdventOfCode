@@ -312,6 +312,8 @@
 <br/>
 <a href=./2018/Day13>Day 13: Mine Cart Madness</a>
 <br/>
+<a href=./2018/Day14>Day 14: Chocolate Charts**</a>
+<br/>
 </details>
 <details>
 <summary><h3><a href=./2017>2017</a></h3></summary>
