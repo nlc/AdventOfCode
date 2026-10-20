@@ -2,7 +2,7 @@
 # [1518-08-20 00:15] wakes up
 # [1518-06-11 00:53] falls asleep
 
-require 'Date'
+require 'date'
 
 records = File.readlines("input.txt").map do |line|
   record = {}
