@@ -314,6 +314,10 @@
 <br/>
 <a href=./2018/Day14>Day 14: Chocolate Charts**</a>
 <br/>
+<a href=./2018/Day16>Day 16: Chronal Classification</a>
+<br/>
+<a href=./2018/Day18>Day 18: Settlers of The North Pole**</a>
+<br/>
 </details>
 <details>
 <summary><h3><a href=./2017>2017</a></h3></summary>
