@@ -318,6 +318,8 @@
 <br/>
 <a href=./2018/Day18>Day 18: Settlers of The North Pole**</a>
 <br/>
+<a href=./2018/Day20>Day 20: A Regular Map</a>
+<br/>
 </details>
 <details>
 <summary><h3><a href=./2017>2017</a></h3></summary>
