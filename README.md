@@ -191,6 +191,8 @@
 <br/>
 <a href=./2021/Day12>Day 12: Passage Pathing</a>
 <br/>
+<a href=./2021/Day13>Day 13: Transparent Origami**</a>
+<br/>
 </details>
 <details>
 <summary><h3><a href=./2020>2020</a></h3></summary>

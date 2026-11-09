@@ -1,54 +1,40 @@
-# d = 0; s.chars.map { |c| t = [c, d]; d += ({ '(' => 1, ')' => -1 }[c] || 0); t }
-
-DIRS = {
-  'E' => [ 1,  0],
-  'N' => [ 0,  1],
-  'W' => [-1,  0],
-  'S' => [ 0, -1],
-}
-
-def diradd(u, v)
-  u.zip(v).map { |a, b| a + b }
-end
-
-class LinkedNode
-  attr_accessor :loc, :children, :follower
-  def initialize(loc = nil)
-    @loc = loc
-    @children = []
-    @follower = nil
-  end
-
-  def follow(loc = nil)
-    raise 'error' unless @follower.nil?
-    @follower = LinkedNode.new(loc)
-  end
-end
-
 ifname = 'example_ans23.txt'
-root = LinkedNode.new([0, 0])
-curr_node = root
 
-input = File.read(ifname).chomp.chars
+input_str = File.read('example_ans23.txt').chomp[1...-1]
+input = input_str.scan(/([^\(\)\|]+|[\(\)\|])/).flatten
 
-until input.length.zero? do
-  ch, *rest = input
+curr_parent_key_at_depth = ['^']
+last_word = nil
+last_chunk = nil
 
-  case ch
-  when /[ENWS]/
-    next_loc = diradd(curr_node.loc, DIRS[ch])
-    curr_node.loc = next_loc
-    # curr_node = curr_node.follow(next_loc)
+tree = {}
+depth = 0
+input.each do |chunk|
+  case chunk
+  when /[ENWS]+/
+    tree[curr_parent_key_at_depth[depth]] = [] unless tree.key?(curr_parent_key_at_depth[depth])
+    tree[curr_parent_key_at_depth[depth]] << chunk
+    last_word = chunk
+    curr_parent_key_at_depth[depth + 1] = chunk
   when /\(/
-    curr_node.children
+    depth += 1
   when /\)/
-    return nil
+    if last_chunk == '|' # special case
+      tree[curr_parent_key_at_depth[depth]] = [] unless tree.key?(curr_parent_key_at_depth[depth])
+      tree[curr_parent_key_at_depth[depth]] << ''
+    end
+    depth -= 1
   when /\|/
-    return curr_node
+    if last_chunk == '|' || last_chunk == '(' # special case
+      tree[curr_parent_key_at_depth[depth]] = [] unless tree.key?(curr_parent_key_at_depth[depth])
+      tree[curr_parent_key_at_depth[depth]] << ''
+    end
+    # do nothing?
   end
 
-  input = rest
+  last_chunk = chunk
 end
 
-p root
-p curr_node
+p input_str
+p tree
+p curr_parent_key_at_depth
