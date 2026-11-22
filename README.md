@@ -193,6 +193,8 @@
 <br/>
 <a href=./2021/Day13>Day 13: Transparent Origami**</a>
 <br/>
+<a href=./2021/Day14>Day 14: Extended Polymerization</a>
+<br/>
 </details>
 <details>
 <summary><h3><a href=./2020>2020</a></h3></summary>
@@ -385,6 +387,6 @@
 <br/>
 <a href=./2015/Day15>Day 15: Science for Hungry People*</a>
 <br/>
-<a href=./2015/Day16>Day 16: Aunt Sue</a>
+<a href=./2015/Day16>Day 16: Aunt Sue*</a>
 <br/>
 </details>
